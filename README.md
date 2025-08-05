@@ -2,6 +2,8 @@
 
 - create react app using vite
 - configured tailwindcss
+- create login/signin form ui and setup routing
+- Added UI functionality to switch between Sign In and Sign Up forms using React's useState hook.
 
 
 # features :-
@@ -17,4 +19,4 @@
             - movies list * n
 - netflixGPT 
     - search bar
-    - movie suggestions
+    - movie suggestions 

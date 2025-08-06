@@ -8,7 +8,7 @@
 - form validation 
     - JavaScript RegEx based custom validator
 # Form Validation and Rules
-# Validation logic is handled in utils/validate.js
+ - Validation logic is handled in utils/validate.js
 
 |   Field               |          Validation Rule                                                          |
 |-----------------------|-----------------------------------------------------------------------------------|

@@ -1,6 +1,7 @@
-import { useState, useRef } from 'react';
+import { useRef, useState } from 'react';
 import { netflixLogo } from '../../utils/links';
 import { isFormDataValid } from '../../utils/validate';
+import { loginLogic, signUpLogic } from './helperFunctions';
 
 const Login = () => {
 
@@ -11,13 +12,17 @@ const Login = () => {
   const [errorMess, setErrorMess] = useState(null);
 
   const toggleLoginForm = () => setIsLoginForm(!isLoginForm);
-
-
-  const handleSign_up = () => {    // validate the form data
+ 
+  const handleSign_in_up = () => {    // validate the form data
    
     const mess = isFormDataValid(...[fullName, email, password, confirmPassword].map( field => field.current?.value),isLoginForm);
-
     setErrorMess(mess)
+    if(mess) return;
+
+    // sign up/in logic  
+    !isLoginForm 
+    ? signUpLogic(setErrorMess, fullName, email, password, confirmPassword)
+    : loginLogic(setErrorMess, email, password)
   }
 
   const handleAnimation = () => ['email', 'password', 'fullName', 'confirmPassword'].includes(errorMess) && setErrorMess(null) ;
@@ -41,10 +46,11 @@ const Login = () => {
                      />
 
                     <input ref={password} type="password" name="" id="" placeholder='password' 
-                    className ={` ${errorMess == 'password' && 'shake border-red-00'} ${inputBoxCSS} mt-[1.25rem]`} 
+                    className ={` ${errorMess == 'password' && 'shake border-red-500'} ${inputBoxCSS} mt-[1.25rem]`} 
                     onAnimationEnd={handleAnimation}/>
+                    <p className={`${isLoginForm && errorMess == "loginError" ? 'block' : 'hidden'} text-center pt-[18px] text-red-700 font-semibold text-[18px]`}>Email or password is incorrect...!</p>
                     <input ref={confirmPassword} type="password" name="" id="" placeholder='confirm password' className ={`${inputBoxCSS} ${isLoginForm ? 'hidden' : 'block'} mt-[1.25rem]`}/>
-                    <button onClick = { handleSign_up  } className={`bg-red-600 mt-[1rem] w-full rounded-[0.45rem] py-[0.5rem] text-[1rem] capitalize font-semibold`}>{isLoginForm ? "sign in" : "sign up"}</button>
+                    <button onClick = { handleSign_in_up  } className={`bg-red-600/80 mt-[1rem] w-full rounded-[0.45rem] py-[0.5rem] text-[1rem] capitalize font-semibold`}>{isLoginForm ? "sign in" : "sign up"}</button>
                             <b className={`${isLoginForm ? 'inline-block' : 'hidden'}  w-full text-center my-[0.5rem] text-[1.5rem] font-mono`}>OR</b>
                     <button className={` ${isLoginForm ? 'block' : 'hidden'} bg-[#3A3535]  w-full rounded-[0.45rem] py-[0.65rem] text-[1rem] capitalize font-semibold`}>use a sign-in code </button>
                     <p className={`${isLoginForm ? 'block' : 'hidden'} text-center underline my-[1.5rem] text-[1.1rem]`}>forgot password?</p>

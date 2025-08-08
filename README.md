@@ -33,12 +33,12 @@
 
 # Form Authentication (Firebase)
    - implement sign in user api
-   - Authentication logic is modularized in `helperFunctions.js`
-    - Located in: `src/components/Login/helperFunctions.js`
-    - `loginLogic()` — handles user sign-in
-    - `signUpLogic()` — handles user registration
-    - `resetFormValues()` — resets form inputs and clears error state
-    - Shows meaningful error messages on invalid credentials
+   - Authentication logic is modularized in helperFunctions.js
+   - `Located in`: src/components/Login/helperFunctions.js
+   - `loginLogic()` — handles user sign-in
+   - `signUpLogic()` — handles user registration
+   - `resetFormValues()` — resets form inputs and clears error state
+   - Shows meaningful error messages on invalid credentials
 
 
 - loginLogic(setErrorMess, email, password)

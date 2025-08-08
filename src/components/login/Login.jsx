@@ -2,11 +2,13 @@ import { useRef, useState } from 'react';
 import { netflixLogo } from '../../utils/links';
 import { isFormDataValid } from '../../utils/validate';
 import { loginLogic, signUpLogic } from './helperFunctions';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
 
   const inputBoxCSS = `placeholder:capitalize placeholder:text-gray-200 outline-none h-[3.3rem] w-full border-[1px] border-[#605F5E] rounded-[0.45rem] px-[1.5rem] bg-[#605F5E]/20`
   const [isLoginForm , setIsLoginForm] = useState(true)
+  const navigate = useNavigate()
 
   const email = useRef(null), password = useRef(null), fullName = useRef(null), confirmPassword = useRef(null)
   const [errorMess, setErrorMess] = useState(null);
@@ -20,9 +22,11 @@ const Login = () => {
     if(mess) return;
 
     // sign up/in logic  
-    !isLoginForm 
-    ? signUpLogic(setErrorMess, fullName, email, password, confirmPassword)
-    : loginLogic(setErrorMess, email, password)
+    if(!isLoginForm ){
+        signUpLogic(navigate, setErrorMess, fullName, email, password, confirmPassword)
+    }else{
+        loginLogic(navigate, setErrorMess, email, password)
+    }
   }
 
   const handleAnimation = () => ['email', 'password', 'fullName', 'confirmPassword'].includes(errorMess) && setErrorMess(null) ;

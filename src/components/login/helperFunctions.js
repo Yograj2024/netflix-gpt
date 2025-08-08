@@ -1,5 +1,4 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../../utils/firebase';
 
 
@@ -8,12 +7,13 @@ export const resetFormValues = (setErrorMess, fieldArr) => {
     setErrorMess(null)
 }
 
-export const loginLogic = (setErrorMess, email, password) => {
+export const loginLogic = (navigate, setErrorMess, email, password) => {
     signInWithEmailAndPassword(auth, email.current?.value, password.current?.value)
     .then((userCredential) => {
         const user = userCredential.user;
         console.log(user)
         resetFormValues(setErrorMess, [email,password])
+        navigate("/browse")
     })
     .catch((error) => {
         setErrorMess('loginError')
@@ -22,13 +22,14 @@ export const loginLogic = (setErrorMess, email, password) => {
     });
 }
 
-export const signUpLogic = (setErrorMess, fullName, email, password, confirmPassword) => {
+export const signUpLogic = (navigate, setErrorMess, fullName, email, password, confirmPassword) => {
     // signUp logic
     createUserWithEmailAndPassword(auth, email.current?.value, password.current?.value)
     .then((userCredential) => {
         const user = userCredential.user;
         console.log(user)
         resetFormValues(setErrorMess, [email,password,fullName,confirmPassword])
+        navigate("/browse")
     })
     .catch((error) => {
         const errorCode = error.code;

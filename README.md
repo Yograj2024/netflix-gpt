@@ -4,6 +4,8 @@
 - configured tailwindcss
 - create login/signin form ui and setup routing
 - Added UI functionality to switch between Sign In and Sign Up forms using React's useState hook.
+- implemented sign/in,up locgic
+- show user profile 
 
 
 # Implemented Event List
@@ -29,6 +31,7 @@
 |  Password             |   Min 8 characters, with at least 1 uppercase, 1 lowercase, and 1 digit           |
 |  Full Name            |   Must be at least 3 characters (Only required in Sign Up mode)                   |
 |  Confirm Password     |   Must match the password (Only required in Sign Up mode)                         |
+|  Image URL            |   Must be a valid image link (Only required in Sign Up mode)                      |
 
 
 # Form Authentication (Firebase)
@@ -54,7 +57,7 @@
 # ⚛️ Redux Integration
    - Added Redux Toolkit to manage global state
    - Auth state (like login info) is now stored in the Redux store
-   - Once the user logs in, they are automatically navigated to /browse route
+   - Once the user logs in, they are automatically navigated to `/browse route`
 
 
 # features :-
@@ -63,6 +66,7 @@
     - redirect to browser page
     - Firebase Authentication
     - Form validation and error feedback
+    - added user image and userName display after sign up
 - Browser Page (after authentication)
     - Header with navigation
     - Movie Hero section

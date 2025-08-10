@@ -1,8 +1,22 @@
+import { Outlet, useLocation } from "react-router-dom";
+import Header from "./Header";
 
 const Body = () => {
+  const location = useLocation();
+  const isLoginpage = location.pathname === "/"
   
   return <>
-    <h1>body</h1>
+    <header>
+      <Header loginForm={<Outlet/>}/>
+    </header>
+
+    <main>
+     {!isLoginpage  && <Outlet/>}
+    </main>
+
+    <footer>
+
+    </footer>
   </>
 };
 

@@ -1,22 +1,21 @@
 import { signOut } from 'firebase/auth';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { auth } from '../utils/firebase';
 import { netflixLogo } from '../utils/links';
-import { useSelector } from 'react-redux';
 
 const Header = ({loginForm}) => {
- 
-    const navigate = useNavigate();
+  
+    
     const user = useSelector( store => store.user );
     const userName = user?.displayName == null ? "user name not provided" : user.displayName
 
     const handleSignOut = () => {
         signOut(auth).then(() => {
             // Sign-out successful.
-            navigate("/")
+           
         }).catch((error) => {
             // An error happened.
-            navigate("/error")
+            
         });
     }
 

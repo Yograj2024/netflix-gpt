@@ -11,22 +11,22 @@ const Login = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch();
 
-  const email = useRef(null), password = useRef(null), fullName = useRef(null), imgURL = useRef(null), confirmPassword = useRef(null)
+  const email = useRef(null), password = useRef(null), fullName = useRef(null), imgURL = useRef(" "), confirmPassword = useRef(null)
   const [errorMess, setErrorMess] = useState(null);
 
   const toggleLoginForm = () => setIsLoginForm(!isLoginForm);
 
   const handleSign_in_up = () => {    // validate the form data
    
-    const mess = isFormDataValid(...[fullName, email, password, confirmPassword].map( field => field.current?.value),isLoginForm);
+    const mess = isFormDataValid(...[fullName, email, password, confirmPassword, imgURL].map( field => field.current?.value),isLoginForm);
     setErrorMess(mess)
-    if(mess) return;
+    if(mess){console.log(mess); return};
 
     // sign up/in logic  
     if(!isLoginForm ){
-        signUpLogic(navigate, setErrorMess, fullName, email, password, imgURL, confirmPassword, dispatch)
+        signUpLogic(setErrorMess, fullName, email, password, imgURL, confirmPassword, dispatch)
     }else{
-        loginLogic(navigate, setErrorMess, email, password)
+        loginLogic(setErrorMess, email, password)
     }
   }
 
@@ -41,8 +41,8 @@ const Login = () => {
          ${isLoginForm ? 'invisible absolute' : 'block'} mt-[1.5rem]`}/>
 
         <input ref={imgURL} type="text" name="imgURL" id="" placeholder='imageURL'
-        onAnimationEnd={handleAnimation}
-        className ={`${errorMess == 'fullName' && 'shake border-red-500'} ${inputBoxCSS}
+        onAnimationEnd={handleAnimation} defaultValue={""}
+        className ={`${errorMess == 'imgURL' && 'shake border-red-500'} ${inputBoxCSS}
          ${isLoginForm ? 'invisible absolute' : 'block'} mt-[1.5rem]`}/>
 
         <input ref={email} type="text" name="user_emailORnumber" id="" placeholder='email or mobile number'

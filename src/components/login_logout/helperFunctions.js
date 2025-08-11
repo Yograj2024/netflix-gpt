@@ -4,24 +4,25 @@ import { userLogedIn } from "../../utils/usereSlice";
 
 export const resetFormValues = (setErrorMess, fieldArr) => {
     fieldArr.forEach(ref => ref.current.value = null); // Reset all form input fields to empty   
+    fieldArr.forEach(ref => console.log(ref)); // Reset all form input fields to empty   
     setErrorMess(null)
 }
 
-export const loginLogic = (navigate, setErrorMess, email, password) => {
+export const loginLogic = (setErrorMess, email, password) => {
     signInWithEmailAndPassword(auth, email.current?.value, password.current?.value)
     .then((userCredential) => {
         resetFormValues(setErrorMess, [email,password])
-        navigate("/browse")
     })
     .catch((error) => {
         setErrorMess('loginError')
+        console.log(error)
         alert(error)
         const errorCode = error.code;
         const errorMessage = error.message;
     });
 }
 
-export const signUpLogic = (navigate, setErrorMess, fullName, email, password, imgURL,confirmPassword, dispatch) => {
+export const signUpLogic = (setErrorMess, fullName, email, password, imgURL,confirmPassword, dispatch) => {
     // signUp logic
     const enterdName = fullName.current?.value
     const imgUrl = imgURL.current?.value
@@ -42,13 +43,12 @@ export const signUpLogic = (navigate, setErrorMess, fullName, email, password, i
                     }
                 )
             )
-            resetFormValues(setErrorMess, [email,password,fullName,confirmPassword])
-            navigate("/browse");
+            resetFormValues(setErrorMess, [email,password,fullName,confirmPassword, imgURL])
         }).catch((error) => {
             // An error occurred
             setErrorMess(error.message)
         });
-    })
+    }) 
     .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;

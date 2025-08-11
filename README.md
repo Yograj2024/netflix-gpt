@@ -7,6 +7,15 @@
 - implemented sign/in,up locgic
 - show user profile 
 
+# Access Control Fix
+## Problem  
+- Users able to access the `/login` page even after logging in.  
+- Users could access the `/browse` page even after logging out.
+
+## How to Fix it  
+- Fixed this by using `useEffect` to control route access.  
+- Moved the access control logic to a global component (`Body`) to handle route protection more effectively.
+
 
 # Implemented Event List
 - onClick           :  Used to handle button clicks for form submission and UI interactions.

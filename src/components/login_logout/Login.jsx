@@ -1,14 +1,12 @@
 import { useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { isFormDataValid } from '../../utils/validate';
-import { loginLogic, signUpLogic } from './helperFunctions';
 import { useDispatch } from "react-redux";
+import { isFormDataValid } from '../../utils/validateFormData';
+import { loginLogic, signUpLogic } from './helperFunctions';
 
 const Login = () => {
 
   const inputBoxCSS = `placeholder:capitalize placeholder:text-gray-200 outline-none h-[3.3rem] w-full border-[1px] border-[#605F5E] rounded-[0.45rem] px-[1.5rem] bg-[#605F5E]/20`
   const [isLoginForm , setIsLoginForm] = useState(true)
-  const navigate = useNavigate()
   const dispatch = useDispatch();
 
   const email = useRef(null), password = useRef(null), fullName = useRef(null), imgURL = useRef(" "), confirmPassword = useRef(null)

@@ -25,6 +25,3 @@ const analytics = getAnalytics(app);
 
 export const auth = getAuth();
 
-
-
-

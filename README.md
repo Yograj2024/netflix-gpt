@@ -14,8 +14,9 @@
 
 ## How to Fix it  
 - Fixed this by using `useEffect` to control route access.  
-- Moved the access control logic to a global component (`Body`) to handle route protection more effectively.
+- Moved the access control logic to a global component (`Header`) to handle route protection more effectively.
 
+- unscribed to the onAuthStateChanged callback 
 
 # Implemented Event List
 - onClick           :  Used to handle button clicks for form submission and UI interactions.
@@ -68,6 +69,14 @@
    - Auth state (like login info) is now stored in the Redux store
    - Once the user logs in, they are automatically navigated to `/browse route`
 
+### ✅ Changes Implemented
+- Registered on **TMDB (The Movie Database)** and obtained an **API Access Token**.
+- Fetched movie data from TMDB API and integrated it into the app.
+- Added **background video** in the Hero section for a cinematic feel.
+- Created a new folder `customhooks` and implemented:
+  - `useGetMoviesList` → Custom hook to fetch and manage movies list.
+  - `useMovieTrailer` → Custom hook to fetch and manage movie trailer data.
+- Displayed movie details dynamically in the Hero section.
 
 # features :-
 - login/sign up page

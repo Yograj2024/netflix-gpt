@@ -69,7 +69,7 @@
    - Auth state (like login info) is now stored in the Redux store
    - Once the user logs in, they are automatically navigated to `/browse route`
 
-### ✅ Changes Implemented
+### ✅ Build Hero section 
 - Registered on **TMDB (The Movie Database)** and obtained an **API Access Token**.
 - Fetched movie data from TMDB API and integrated it into the app.
 - Added **background video** in the Hero section for a cinematic feel.

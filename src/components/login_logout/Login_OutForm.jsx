@@ -5,7 +5,7 @@ import { loginLogic, signUpLogic } from './helperFunctions';
 
 const Login = () => {
 
-  const inputBoxCSS = `placeholder:capitalize placeholder:text-gray-200 outline-none h-[3.3rem] w-full border-[1px] border-[#605F5E] rounded-[0.45rem] px-[1.5rem] bg-[#605F5E]/20`
+  const inputBoxCSS = `placeholder:capitalize placeholder:text-gray-200 outline-none h-[3rem] w-full border-[1px] border-[#605F5E] rounded-[0.45rem] px-[1.5rem] bg-[#605F5E]/20`
   const [isLoginForm , setIsLoginForm] = useState(true)
   const dispatch = useDispatch();
 
@@ -30,22 +30,22 @@ const Login = () => {
 
   const handleAnimation = () => ['email', 'password', 'fullName', 'confirmPassword', 'imageURL'].includes(errorMess) && setErrorMess(null) ;
 
-  return <div className={`bg-black/75 w-[38%] mx-auto text-white px-[4.5rem] py-[3rem]`}>
+  return <div className={`bg-black/75 w-[32%] mx-auto text-white px-[3rem] py-[1.5rem]`}>
     <h2 className ='text-[2rem] font-bold '>{isLoginForm ? "sign in" : "sign up"}</h2>
     <form action="" onSubmit = { (e) => e.preventDefault() }>
         <input ref={fullName} type="text" name="fullName" id="" placeholder='full name'
         onAnimationEnd={handleAnimation}
         className ={`${errorMess == 'fullName' && 'shake border-red-500'} ${inputBoxCSS}
-         ${isLoginForm ? 'invisible absolute' : 'block'} mt-[1.5rem]`}/>
+         ${isLoginForm ? 'hidden' : 'block'} mt-[1.25rem]`}/>
 
         <input ref={imgURL} type="text" name="imgURL" id="" placeholder='imageURL'
         onAnimationEnd={handleAnimation} defaultValue={""}
         className ={`${errorMess == 'imgURL' && 'shake border-red-500'} ${inputBoxCSS}
-         ${isLoginForm ? 'invisible absolute' : 'block'} mt-[1.5rem]`}/>
+         ${isLoginForm ? 'hidden' : 'block'} mt-[1.25rem]`}/>
 
         <input ref={email} type="text" name="user_emailORnumber" id="" placeholder='email or mobile number'
         onAnimationEnd={handleAnimation}
-        className ={`${errorMess == 'email' && 'shake border-red-500'} ${inputBoxCSS} mt-[1.5rem]`} />
+        className ={`${errorMess == 'email' && 'shake border-red-500'} ${inputBoxCSS} mt-[1.25rem]`} />
 
         <input ref={password} type="password" name="" id="" placeholder='password' 
         className ={` ${errorMess == 'password' && 'shake border-red-500'} ${inputBoxCSS} mt-[1.25rem]`} 

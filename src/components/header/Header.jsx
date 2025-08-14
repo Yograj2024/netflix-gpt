@@ -42,6 +42,7 @@ const Header = ({loginForm}) => {
     }, [])
 
     const handleSignOut = () => {
+        console.log("click on signOut")
         signOut(auth).then(() => {
              /* Sign-out successful. */
         }).catch((error) => {
@@ -50,17 +51,16 @@ const Header = ({loginForm}) => {
     }
 
     return <>
-        <nav className ={`relative overflow-hidden ${ !user ? `${logoutPageStyles} h-[52rem] bg-black/50 ` : "h-[38rem] bg-gradient-to-r from-black" }`}>
+        <nav className ={`relative overflow-hidden ${ !user ? `  ` : "" }`}>
             <div className ={`capitalize ${ user && "flex items-center justify-between pr-[5rem]"}`}>
                 <div className={`inline-block h-auto w-[12rem] ml-[4rem]`}> <img src={netflixLogo} alt="" className={`h-full w-full  object-cover`}/> </div>
                 { 
-                    !user     ?
-                    loginForm :
-                    <div className={`flex items-center gap-x-[1rem]`}> 
-                        <dir>
+                    user  &&
+                    <div className={`flex items-center gap-x-[1rem] relative z-[2]`}> 
+                        <div>
                             <div className={`h-[4rem] aspect-square`}> <img src={user?.photoURL} alt="user-img" className={`h-full w-full object-cover rounded-[1rem]`} /> </div>
                             <p className={`text-white font-semibold`}>{userName}</p>
-                        </dir>
+                        </div>
                         <button onClick = { handleSignOut }
                         className = { ` ${!user ? "hidden" : 
                         "bg-red-500 text-[1rem] capitalize font-semibold rounded-[8px] text-white px-[12px] py-[3px] "}`}>
@@ -69,8 +69,8 @@ const Header = ({loginForm}) => {
                     </div>
                 }
             </div>
-            { user &&  <HeroSection /> }
         </nav>
+        { user &&  <HeroSection /> }
     </>
 };
 

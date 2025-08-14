@@ -78,20 +78,20 @@
   - Browse Page Layout & Design start
 
 # ✅ Build Hero section 
-- Registered on **TMDB (The Movie Database)** and obtained an **API Access Token**.
-- Fetched movie data from TMDB API and integrated it into the app.
-- Added **background video** in the Hero section for a cinematic feel.
-  - Embedded **YouTube video** in the Hero section and made it:
-    - Full width & height
-    - Autoplay
-    - Muted
-    - Looping
-- Created a new folder `customhooks` and implemented:
-  - `useGetMoviesList` → Custom hook to fetch and manage movies list.
-  - `useMovieTrailer` → Custom hook to fetch and manage movie trailer data.
-- Displayed movie details dynamically in the Hero section.
+  - Registered on **TMDB (The Movie Database)** and obtained an **API Access Token**.
+  - Fetched movie data from TMDB API and integrated it into the app.
+  - Added **background video** in the Hero section for a cinematic feel.
+    - Embedded **YouTube video** in the Hero section and made it:
+      - Full width & height
+      - Autoplay
+      - Muted
+      - Looping
+  - Created a new folder `customhooks` and implemented:
+    - `useGetMoviesList` → Custom hook to fetch and manage movies list.
+    - `useMovieTrailer` → Custom hook to fetch and manage movie trailer data.
+  - Displayed movie details dynamically in the Hero section.
 
-### ✅ Build Main section 
+# ✅ Build Main section 
   - Created a main folder to better organize UI components.
   - Inside the main folder, added three new components:
     - Main.jsx → Renders multiple MoviesRow sections such as Trending and Top Rated.
@@ -106,6 +106,19 @@
     - Main.jsx uses useSelector to fetch nowPlayingMovies and topRatedMovie from Redux.
     - MoviesRow.jsx renders the title and passes the movie list to MovieCard.
     - Passes each movie list to MoviesRow.
+
+# Create Slider
+- **Added slider functionality** in `MoviesRow.jsx`
+- **Used callback functions** to pass ref from `MovieCard` to `MoviesRow` for better control
+  - `useRef` to track scroll container
+  - **`moveOn_X(scroll_distance)` function** to scroll horizontally with smooth animation 
+    - **`How to work moveOn_X :-`
+      1. **Receives** a scroll distance value (`+1040` for right, `-1040` for left)
+      2. Checks if `scrollRef.current` (the movie list container) exists
+      3. Calls `scrollBy` to move horizontally by the given distance
+    - Connected to **Left** and **Right** button click events:
+      - Left button → `moveOn_X(-1040)`
+      - Right button → `moveOn_X(1040)`
 
 
 # features :-

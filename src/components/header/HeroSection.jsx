@@ -2,12 +2,12 @@ import { useSelector } from "react-redux";
 import useMovieTrailer from "../../customHooks/useMovieTrailer";
 import { moreInfo, playBtn } from "../../utils/constants";
 
-const UserLogin = (props) => {
+const HeroSection = (props) => {
 
     const storeTrailer  =   useSelector( store => store.movies.trailerVideo)
     const moviesList    =   useSelector( store => store.movies?.nowPlayingMovies)
 
-    const { title, overview, id }    =   moviesList[6]
+    const { title, overview, id }    =   moviesList[5]
 
     useMovieTrailer(id);
 
@@ -37,4 +37,4 @@ const UserLogin = (props) => {
     </>
 };
 
-export default UserLogin;
+export default HeroSection;

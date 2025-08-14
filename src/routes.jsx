@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import Login from "./components/login_logout/Login";
+import Login_OutForm from "./components/login_logout/Login_OutForm";
 import Body from "./components/Body";
 import Main from "./components/main/Main";
 
@@ -10,7 +10,7 @@ const appRoutes = createBrowserRouter([
         children:[
             {
                 path:"/",
-                element:<Login/>
+                element:<Login_OutForm/>
             },
             {
                 path: '/browse',

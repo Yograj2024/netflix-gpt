@@ -7,12 +7,12 @@ const UserLogin = (props) => {
     const storeTrailer  =   useSelector( store => store.movies.trailerVideo)
     const moviesList    =   useSelector( store => store.movies?.nowPlayingMovies)
 
-    const { title, overview, id }    =   moviesList[8]
+    const { title, overview, id }    =   moviesList[6]
 
     useMovieTrailer(id);
 
     return <>
-        <div className={`h- w-full absolute z-[-1] top-[-170px]`}> {/* hero section bg-video */}
+        <div className={`w-full absolute z-[-1] top-[-180px]`}> {/* hero section bg-video */}
            <iframe className ={`object-cover`} width="1518" height="980"
             src={"https://www.youtube.com/embed/" + storeTrailer + "?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&loop=1&playlist=" + storeTrailer }
             title="YouTube video player"
@@ -20,8 +20,8 @@ const UserLogin = (props) => {
             referrerPolicy="strict-origin-when-cross-origin" >
            </iframe>
         </div>
-        <div className={`px-[5rem] absolute bottom-[3rem] `}>
-            <h2 className={` text-white text-[2.25rem] font-bold mb-[1rem]`}> { title } </h2>
+        <div className ={`px-[5rem] absolute top-0 h-full flex flex-col justify-end pb-[5rem]`}>
+            <h2 className={` text-white text-[2rem] leading-[2.85rem] font-bold mb-[1rem] w-[32rem]`}> { title } </h2>
             <p className={` text-white text-[1rem] w-[40%] line-clamp-3 `}>  { overview } </p>
             <div className={`mt-[3rem] flex`}>
                 <button className={`bg-[#E2E8F0] hover:opacity-60 rounded-[0.5rem] capitalize text-center text-[1.2rem] font-semibold w-[7rem] h-[2.5rem] mr-[2rem] grid grid-cols-[40%_auto] place-items-center px-[1rem]`}> 

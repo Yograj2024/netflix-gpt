@@ -50,8 +50,8 @@ const Header = ({loginForm}) => {
     }
 
     return <>
-        <section className ={`relative overflow-hidden ${ !user ? `${logoutPageStyles} h-[52rem] bg-black/40` : "h-[38rem] bg-black/20" }`}>
-            <div className ={`capitalize ${ user && "flex items-center justify-between pr-[5rem] bg-gradient-to-t from-blaack to-black"}`}>
+        <section className ={`relative overflow-hidden ${ !user ? `${logoutPageStyles} h-[52rem] bg-black/50 ` : "h-[38rem] bg-gradient-to-r from-black" }`}>
+            <div className ={`capitalize ${ user && "flex items-center justify-between pr-[5rem]"}`}>
                 <div className={`inline-block h-auto w-[12rem] ml-[4rem]`}> <img src={netflixLogo} alt="" className={`h-full w-full  object-cover`}/> </div>
                 { 
                     !user     ?

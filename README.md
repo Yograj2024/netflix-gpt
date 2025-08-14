@@ -7,16 +7,13 @@
 - implemented sign/in,up locgic
 - show user profile 
 
-# Access Control Fix
-## Problem  
-- Users able to access the `/login` page even after logging in.  
-- Users could access the `/browse` page even after logging out.
+##  Tech Stack
 
-## How to Fix it  
-- Fixed this by using `useEffect` to control route access.  
-- Moved the access control logic to a global component (`Header`) to handle route protection more effectively.
-
-- unscribed to the onAuthStateChanged callback 
+- **Frontend**: React (via Vite), TailwindCSS  
+- **Routing & State**: React Router, Redux Toolkit  
+- **Auth & Hosting**: Firebase  
+- **API Integrations**: TMDB for movie data, YouTube for video background, GPT for search  
+- **Custom Hooks**: Modular hooks for fetching movies, trailers, and AI-powered search
 
 # Implemented Event List
 - onClick           :  Used to handle button clicks for form submission and UI interactions.
@@ -53,7 +50,6 @@
    - `resetFormValues()` — resets form inputs and clears error state
    - Shows meaningful error messages on invalid credentials
 
-
 - loginLogic(setErrorMess, email, password)
 - signUpLogic(setErrorMess, fullName, email, password, confirmPassword)
 - resetFormValues(setErrorMess, fieldArr)
@@ -65,11 +61,24 @@
 
 
 # ⚛️ Redux Integration
-   - Added Redux Toolkit to manage global state
-   - Auth state (like login info) is now stored in the Redux store
-   - Once the user logs in, they are automatically navigated to `/browse route`
+  - Added Redux Toolkit to manage global state
+  - Auth state (like login info) is now stored in the Redux store
+  - Once the user logs in, they are automatically navigated to `/browse route`
 
-### ✅ Build Hero section 
+# Access Control Fix
+- Problem  
+  - Users able to access the `/login` page even after logging in.  
+  - Users could access the `/browse` page even after logging out.
+
+# How to Fix it  
+- Fixed this by using `useEffect` to control route access.  
+- Moved the access control logic to a global component (`Header`) to handle route protection more effectively.
+- unscribed to the onAuthStateChanged callback 
+
+## After login, user is navigated to `/browse`.
+  - Browse Page Layout & Design start
+
+# ✅ Build Hero section 
 - Registered on **TMDB (The Movie Database)** and obtained an **API Access Token**.
 - Fetched movie data from TMDB API and integrated it into the app.
 - Added **background video** in the Hero section for a cinematic feel.
@@ -82,6 +91,23 @@
   - `useGetMoviesList` → Custom hook to fetch and manage movies list.
   - `useMovieTrailer` → Custom hook to fetch and manage movie trailer data.
 - Displayed movie details dynamically in the Hero section.
+
+### ✅ Build Main section 
+  - Created a main folder to better organize UI components.
+  - Inside the main folder, added three new components:
+    - Main.jsx → Renders multiple MoviesRow sections such as Trending and Top Rated.
+    - MoviesRow.jsx → Displays a title and list of movies.
+    - MovieCard.jsx → Renders individual movie posters.
+  - Created a new custom hook:
+    - useTopRated.js → Fetches Top Rated Movies from TMDB API and stores them in Redux using addTopRatedMovie.
+  - Updated Redux Store (moviesListSlice) to include a new topRatedMovie state and corresponding action to store fetched top-rated movies.
+  - Data Fetching & Store Update
+    - useTopRated.js runs on mount, calls the TMDB Top Rated Movies API, and dispatches addTopRatedMovie() to update the store.
+  - Main Component Flow
+    - Main.jsx uses useSelector to fetch nowPlayingMovies and topRatedMovie from Redux.
+    - MoviesRow.jsx renders the title and passes the movie list to MovieCard.
+    - Passes each movie list to MoviesRow.
+
 
 # features :-
 - login/sign up page

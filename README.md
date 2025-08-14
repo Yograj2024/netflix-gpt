@@ -107,18 +107,18 @@
     - MoviesRow.jsx renders the title and passes the movie list to MovieCard.
     - Passes each movie list to MoviesRow.
 
-# Create Slider
-- **Added slider functionality** in `MoviesRow.jsx`
-- **Used callback functions** to pass ref from `MovieCard` to `MoviesRow` for better control
-  - `useRef` to track scroll container
-  - **`moveOn_X(scroll_distance)` function** to scroll horizontally with smooth animation 
-    - **`How to work moveOn_X :-`
-      1. **Receives** a scroll distance value (`+1040` for right, `-1040` for left)
-      2. Checks if `scrollRef.current` (the movie list container) exists
-      3. Calls `scrollBy` to move horizontally by the given distance
-    - Connected to **Left** and **Right** button click events:
-      - Left button → `moveOn_X(-1040)`
-      - Right button → `moveOn_X(1040)`
+- **Create Slider**
+  - **Added slider functionality** in `MoviesRow.jsx`
+  - **Used callback functions** to pass ref from `MovieCard` to `MoviesRow` for better control
+    - `useRef` to track scroll container
+    - **`moveOn_X(scroll_distance)` function** to scroll horizontally with smooth animation 
+      - `How to work moveOn_X `:-
+        1. **Receives** a scroll distance value (`+1040` for right, `-1040` for left)
+        2. Checks if `scrollRef.current` (the movie list container) exists
+        3. Calls `scrollBy` to move horizontally by the given distance
+      - Connected to **Left** and **Right** button click events:
+        - Left button → `moveOn_X(-1040)`
+        - Right button → `moveOn_X(1040)`
 
 
 # features :-

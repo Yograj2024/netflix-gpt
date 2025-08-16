@@ -104,14 +104,13 @@
       ${(!user || (user && gpt)) && `${headerBeforeCss}`}
     `}
   >
-**Logic Table**
+**Logic Table** <br>
 | **User**   | **GPT**  | `after` height | `header` height | Extra CSS? (`headerBeforeCss`) |
-|-------- ---|----------| -------------- |-----------------|--------------------------------|
-| ❌ No     | ❌ No    | 37.95rem       | (none)          |  ✅ Yes                       |
-| ❌ No     | ✅ Yes   | 37.95rem       | (none)          |  ✅ Yes                       |
-| ✅ Yes    | ❌ No    | 47.9rem        | 47.9rem         |  ❌ No                        |
-| ✅ Yes    | ✅ Yes   | 37.95rem       | (none)          |  ✅ Yes                       |
-                   
+|------------|----------| -------------- |-----------------|--------------------------------|
+| ❌ No     | ❌ No    | 37.95rem       | (none)          |  ✅ Yes                        |
+| ❌ No     | ✅ Yes   | 37.95rem       | (none)          |  ✅ Yes                        |
+| ✅ Yes    | ❌ No    | 47.9rem        | 47.9rem         |  ❌ No                         |
+| ✅ Yes    | ✅ Yes   | 37.95rem       | (none)          |  ✅ Yes                        |
 
 
 # ✅ Build Main section 

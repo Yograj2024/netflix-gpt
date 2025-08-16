@@ -93,6 +93,27 @@
     - `useMovieTrailer` → Custom hook to fetch and manage movie trailer data.
   - Displayed movie details dynamically in the Hero section.
 
+- **Implemented Conditional CSS Styling for Hero Section**  
+  Applied dynamic height and background styling to the `<header>` element based onbased on two state variables 
+  -  user → whether a user is logged in
+  -  gpt  → whether GPT mode is active 
+  <header
+    className={`relative ${headerAfterCss}
+      ${!user ? "after:h-[37.95rem]" : gpt ? "after:h-[37.95rem]" : "after:h-[47.9rem]"}
+      ${user ? (gpt ? "" : "h-[47.9rem]") : ""}
+      ${(!user || (user && gpt)) && `${headerBeforeCss}`}
+    `}
+  >
+**Logic Table**
+| **User**   | **GPT**  | `after` height | `header` height | Extra CSS? (`headerBeforeCss`) |
+|-------- ---|----------| -------------- |-----------------|--------------------------------|
+| ❌ No     | ❌ No    | 37.95rem       | (none)          |  ✅ Yes                       |
+| ❌ No     | ✅ Yes   | 37.95rem       | (none)          |  ✅ Yes                       |
+| ✅ Yes    | ❌ No    | 47.9rem        | 47.9rem         |  ❌ No                        |
+| ✅ Yes    | ✅ Yes   | 37.95rem       | (none)          |  ✅ Yes                       |
+                   
+
+
 # ✅ Build Main section 
   - Created a main folder to better organize UI components.
   - Inside the main folder, added three new components:
@@ -121,6 +142,14 @@
       - Connected to **Left** and **Right** button click events:
         - Left button → `moveOn_X(-1040)`
         - Right button → `moveOn_X(1040)`
+
+
+# Build GPT search page :-
+- **Designed GPT Search Page UI**  
+  Created a visually appealing and responsive search page for GPT search functionality.
+
+
+
 
 
 # features :-

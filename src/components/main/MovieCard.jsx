@@ -22,7 +22,7 @@ const MovieCard = ({movieList, sendRef}) => {
             sendRef(scrollRef.current)
         }
     }, [sendRef]);
-
+    
     return movieList && <div ref={scrollRef} className ={`pl-[0.5rem] py-[1rem] w-[95%] m-auto flex gap-x-[2rem] overflow-x-scroll hide-scrollbar`}>
 
         { 

@@ -1,5 +1,7 @@
 # netflix GPT 🎬
 
+26:54
+
 - create react app using vite
 - configured tailwindcss
 - create login/signin form ui and setup routing

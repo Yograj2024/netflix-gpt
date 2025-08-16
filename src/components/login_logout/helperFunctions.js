@@ -4,7 +4,6 @@ import { userLogedIn } from "../../utils/store/usereSlice";
 
 export const resetFormValues = (setErrorMess, fieldArr) => {
     fieldArr.forEach(ref => ref.current.value = null); // Reset all form input fields to empty   
-    fieldArr.forEach(ref => console.log(ref)); // Reset all form input fields to empty   
     setErrorMess(null)
 }
 

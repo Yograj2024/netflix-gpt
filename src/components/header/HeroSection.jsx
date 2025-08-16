@@ -2,16 +2,18 @@ import { useSelector } from "react-redux";
 import useMovieTrailer from "../../customHooks/useMovieTrailer";
 import { moreInfo, playBtn } from "../../utils/constants";
 
-const HeroSection = (props) => {
+const HeroSection = () => {
 
     const storeTrailer  =   useSelector( store => store.movies.trailerVideo)
     const moviesList    =   useSelector( store => store.movies?.nowPlayingMovies)
+    const gpt         = useSelector( store => store.gptSearchPage.isShowGPTSearchPage)
+    const user    =   useSelector( store => store.user)
 
-    const { title, overview, id }    =   moviesList[5]
+    const { title, overview, id }    =   moviesList[6]
 
     useMovieTrailer(id);
 
-    return <>
+    return (user && !gpt ) && <>
         {/* Background Video */}
         <div className={`w-full absolute z-[-1] top-[-90px] overflow-hidden`}>
            <iframe className ={`object-cover`} width="1518" height="855"
@@ -22,7 +24,7 @@ const HeroSection = (props) => {
            </iframe>
         </div>
         {/* Background video content */}
-        <div className ={`px-[5rem] absolute top-0 h-full flex flex-col justify-end pb-[12rem]`}>
+        <div className ={`px-[5rem] bg-gradient-to-r from-black/40 absolute top-0 h-full flex flex-col justify-end pb-[12rem]`}>
             <h2 className={` text-white text-[2rem] leading-[2.85rem] font-bold mb-[1rem] w-[32rem]`}> { title } </h2>
             <p className={` text-white text-[1rem] w-[40%] line-clamp-4 `}>  { overview } </p>
             <div className={`mt-[3rem] flex`}>

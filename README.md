@@ -143,8 +143,7 @@
 
 
 # Build GPT search page :-
-- **Designed GPT Search Page UI**  
-  Created a visually appealing and responsive search page for GPT search functionality.
+- Designed GPT Search Page UI  
 - Integrated GPT API using for generating recommendations.  
   - Implemented an **input field**.  
   - Now, when a user types text (e.g., *funny movies*), the app fetches data from the API.  

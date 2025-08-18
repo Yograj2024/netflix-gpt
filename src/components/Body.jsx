@@ -20,13 +20,13 @@ const Body = () => {
   return moviesList === null ? <ShimmerUI/> : <>
     <header className ={`relative ${headerAfterCss}
       ${!user ? "after:h-[37.95rem]" : gpt ? "after:h-[37.95rem]" : "after:h-[47.9rem]"}
-       ${user ? (gpt ? "" : "h-[47.9rem]") : ""}
+      ${user ? (gpt ? "" : "h-[47.9rem]") : ""}
       ${(!user || (user && gpt)) && `${headerBeforeCss}`} 
     `}> {/* explain in line no. 39 */}
       <Header />
     </header>
 
-    <main>
+    <main className={`${(user && !gpt) && "bg-blue-100"}`}>
       <Outlet/>
     </main>
 

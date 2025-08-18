@@ -1,6 +1,5 @@
 # netflix GPT 🎬
-
-26:54
+02:12
 
 - create react app using vite
 - configured tailwindcss
@@ -21,7 +20,7 @@
 - onClick           :  Used to handle button clicks for form submission and UI interactions.
 - onAnimationEnd    :  Used to remove animation class after effect ends.
 - onSubmit          :
-
+- onChange          :
 
 # Implemented Hook List
 - useState
@@ -146,6 +145,10 @@
 # Build GPT search page :-
 - **Designed GPT Search Page UI**  
   Created a visually appealing and responsive search page for GPT search functionality.
+- Integrated GPT API using for generating recommendations.  
+  - Implemented an **input field**.  
+  - Now, when a user types text (e.g., *funny movies*), the app fetches data from the API.  
+  - API returns a list of **5 relevant movie names** based on the user’s input.
 
 
 

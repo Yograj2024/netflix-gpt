@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { leftBtn, rightBtn, sliderBtnCss } from "../../utils/constants";
+import { leftBtn, rightBtn } from "../../utils/constants";
 import MovieCard from "./MovieCard";
 
 const MoviesRow = ({title, movieList}) => {
@@ -17,9 +17,9 @@ const MoviesRow = ({title, movieList}) => {
 
     const takeRefFromCard = (ref) => scrollRef.current = ref; 
 
-    return  <div className ={`relative mt-[2rem] w-[90%] m-auto`}>
+    return  <div className ={`relative pt-[2rem] w-[90%] m-auto`}>
 
-        <button className={`bg-red-200 absolute top-[60%] bottom-[50%] translate-y-[-50%] h-[8rem] w-[1.5rem] rounded-[1rem]`} 
+        <button className={`bg-red-200 absolute top-[60%] bottom-[50%] translate-y-[-50%] h-[8rem] w-[1.5rem] rounded-[1rem]`}  
         onClick = { (e) => moveOn_X(-1040)}>
             <img src={leftBtn} alt="" className={`h-full w-full object-contain`}/>
         </button>

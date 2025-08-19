@@ -160,9 +160,6 @@
     - `gptMoviesName` → Stores only the movie names returned by GPT.
     - `gptMoviesInfo` → Stores full details fetched from TMDB for each movie.
 
-
-
-
 # features :-
 - login/sign up page
     - Toggle between Sign In / Sign Up

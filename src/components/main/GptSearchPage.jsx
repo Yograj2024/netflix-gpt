@@ -1,15 +1,14 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { gptSearchPageLan } from '../../utils/languageConstant';
-import { API_OPTIONS, gptSearch_API_OPTIONS } from '../../utils/constants';
+import { API_OPTIONS, gptQuery, gptQueryPrefix, gptQuerySuffix, gptSearch_API_OPTIONS } from '../../utils/constants';
+import { gptRecommendedMovies } from '../../utils/store/gptSearchSlice';
 
 const GptSearchPage = () => {
 
     const [userInput, setUserInput] = useState("");
-    const inputBoxCSS = `relative placeholder:capitalize placeholder:text-gray-200 outline-none h-[4rem] 
-    w-full border-[1px] border-[#605F5E] focus:border-red-600 rounded-[0.3rem] px-[1.5rem] bg-black/40 pt-[1rem] focus:shadow-[0px_0px_5px__5px_rgba(255,0,0,0.3)]`
-
-    const appConfig = useSelector( store => store.appConfig.userLanguage)
+    const appConfig      = useSelector( store => store.appConfig.userLanguage)
+    const dispatch       = useDispatch()
 
     // search movie in TMDB 
     const searchMovieONTMDB = async (movie) => {
@@ -20,36 +19,28 @@ const GptSearchPage = () => {
 
     const handle_GPT_Search = async () => {
         // make a API call to gpt aip and get movie results
-
-        const gptQuery = `You are a movie recommendation system.
-        Suggest exactly 5 movie names for this category: ${userInput}. 
-        Return only movie names, no extra text. 
-        The output must be a single line, comma-separated. 
-        Example format: Sholay, Don, Dilwale, Avengers End Game, Koi Mil Gaya`
-
         const data = await fetch('https://api.chatanywhere.tech/v1/chat/completions',{
             ...gptSearch_API_OPTIONS,
             body: JSON.stringify({
                 model:'gpt-3.5-turbo',
-                messages: [ { role: 'developer', content : gptQuery }, ]
+                messages: [ { role: 'system', content : `${gptQueryPrefix}${userInput}${gptQuerySuffix}` }, ]
             })
         })
-        
+     
         const gptResult = (await data.json()).choices[0].message.content.split(",");
-        // console.log(gptResult);
- 
+
         // for each movie in side gptResult i will search TMDB API and get thoese movies data 
         const promiseArary =  gptResult.map( movie => {// data2 me hume 5 promises ka ek array milega
             // [promise1, promise2, promise3, promise4, promise5] and thiese promise take some time to resolve it
           return   searchMovieONTMDB(movie) 
         })
+
         const eachMovieInfo = await Promise.all(promiseArary) 
         //promise.all() ek built-in method hai ye ek arary of promises leta hai jaab sabhi jpromises resolve ho jaate hai tab ye ek result ka array return karata hai 
         // NOTE :- sirf ek promise reject hone se pura promise.all() reject ho jaata hai 
+        dispatch( gptRecommendedMovies({moviesName:gptResult, moviesInfo:eachMovieInfo}))
         
-        console.log(eachMovieInfo)
     }
-
 
     return  <div className={`pt-[5rem] text-white capitalize`}>
         <h2 className={`text-center text-[3.25rem] font-bold leading-[4rem] px-[21rem]`}>{gptSearchPageLan[appConfig].h2}</h2>
@@ -63,7 +54,7 @@ const GptSearchPage = () => {
             {gptSearchPageLan[appConfig].gptSearchPlaceHolder}
             </label>
             <input type="text" id="userDiscription" name="fullName" 
-            className = {` ${ inputBoxCSS } `}
+            className = {` relative placeholder:capitalize placeholder:text-gray-200 outline-none h-[4rem] w-full border-[1px] border-[#605F5E] focus:border-red-600 rounded-[0.3rem] px-[1.5rem] bg-black/40 pt-[1rem] focus:shadow-[0px_0px_5px__5px_rgba(255,0,0,0.3)]`}
             value={userInput}
             onChange={ (e) => setUserInput( e.target.value)}/>
         </div>

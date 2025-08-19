@@ -10,7 +10,7 @@ const appStore = configureStore(
             user    : useReducer,
             movies  : moviesListSlice,
             gptSearchPage : gptSerachSlice,
-            appConfig     : appConfigeSlice
+            appConfig     : appConfigeSlice,
         },
     }
 )

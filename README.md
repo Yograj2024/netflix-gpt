@@ -148,7 +148,17 @@
   - Implemented an **input field**.  
   - Now, when a user types text (e.g., *funny movies*), the app fetches data from the API.  
   - API returns a list of **5 relevant movie names** based on the user’s input.
-
+- Created a function handle_GPT_Search which:
+  - Takes user’s input text.
+  - Calls GPT API to fetch movie names related to the input.
+  - Stores the result as an array of movie names.
+- Built another function `searchMovieONTMDB` which:
+  - Fetches detailed info for each movie from TMDB API.
+- After fetching all movie details:
+  - The Redux store is updated.
+  - Inside `gptSearchSlice`, two new keys were added:
+    - `gptMoviesName` → Stores only the movie names returned by GPT.
+    - `gptMoviesInfo` → Stores full details fetched from TMDB for each movie.
 
 
 

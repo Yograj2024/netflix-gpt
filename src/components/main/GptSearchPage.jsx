@@ -14,9 +14,7 @@ const GptSearchPage = () => {
     // search movie in TMDB 
     const searchMovieONTMDB = async (movie) => {
         const data = await fetch(`https://api.themoviedb.org/3/search/movie?query=${movie}&language=en-US&page=1`, API_OPTIONS)
-
         const json = await data.json();
-        
         return json
     }
 
@@ -38,12 +36,18 @@ const GptSearchPage = () => {
         })
         
         const gptResult = (await data.json()).choices[0].message.content.split(",");
-        console.log(gptResult);
-
+        // console.log(gptResult);
+ 
         // for each movie in side gptResult i will search TMDB API and get thoese movies data 
-        const data2 = await gptResult.map( movie => {
-            searchMovieONTMDB(movie)
+        const promiseArary =  gptResult.map( movie => {// data2 me hume 5 promises ka ek array milega
+            // [promise1, promise2, promise3, promise4, promise5] and thiese promise take some time to resolve it
+          return   searchMovieONTMDB(movie) 
         })
+        const eachMovieInfo = await Promise.all(promiseArary) 
+        //promise.all() ek built-in method hai ye ek arary of promises leta hai jaab sabhi jpromises resolve ho jaate hai tab ye ek result ka array return karata hai 
+        // NOTE :- sirf ek promise reject hone se pura promise.all() reject ho jaata hai 
+        
+        console.log(eachMovieInfo)
     }
 
 

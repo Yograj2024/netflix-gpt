@@ -3,10 +3,10 @@ import GPT_serachResult from './GPT_searchResult';
 
 const GptSearchPage = () => {
 
-    return <>
+    return <section>
         <GPT_SerachBar/>
         <GPT_serachResult/>
-    </> 
+    </section> 
 }; 
 
 export default GptSearchPage;

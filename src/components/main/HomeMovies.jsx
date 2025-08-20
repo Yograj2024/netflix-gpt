@@ -1,9 +1,8 @@
 import { useSelector } from "react-redux";
-import MoviesRow from "./MoviesRow";
-import { useState } from "react";
 import GptSearchPage from "./GptSearchPage";
+import MoviesRow from "./MoviesRow";
 
-const Main = () => {
+const HomeMovies = () => {
 
   const trending    =  useSelector( store => store.movies.nowPlayingMovies)
   const topRated    =  useSelector( store => store.movies.topRatedMovie)
@@ -11,12 +10,12 @@ const Main = () => {
  
 
   return !gpt ? 
-    <div className ={`pb-[3rem] pl-[2rem]`}>
+    <section className ={`pb-[3rem] pl-[2rem]`}>
       <MoviesRow title={"trending now"} movieList={trending} />
       <MoviesRow title={"top rated"} movieList={topRated} />
-    </div> : 
+    </section> : 
     <GptSearchPage/>
    
 }; 
 
-export default Main; 
+export default HomeMovies; 

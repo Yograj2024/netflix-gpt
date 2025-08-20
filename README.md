@@ -1,5 +1,5 @@
 # netflix GPT 🎬
-02:12
+02:48
 
 - create react app using vite
 - configured tailwindcss
@@ -159,21 +159,25 @@
   - Inside `gptSearchSlice`, two new keys were added:
     - `gptMoviesName` → Stores only the movie names returned by GPT.
     - `gptMoviesInfo` → Stores full details fetched from TMDB for each movie.
+  - Reused existing UI components `MovieRow` and `MovieCard`.
+    - Now the API response (movie results) is displayed to the user using MovieRow and MovieCard.
+
+
 
 # features :-
 - login/sign up page
-    - Toggle between Sign In / Sign Up
-    - redirect to browser page
-    - Firebase Authentication
-    - Form validation and error feedback
-    - added user image and userName display after sign up
+  - Toggle between Sign In / Sign Up
+  - redirect to browser page
+  - Firebase Authentication
+  - Form validation and error feedback
+  - added user image and userName display after sign up
 - Browser Page (after authentication)
-    - Header with navigation
-    - Movie Hero section
-        - tailer in background
-        - title and description
-        - movie suggestions
-            - movies list * n
+  - Header with navigation
+  - Movie Hero section
+    - tailer in background
+    - title and description
+    - movie suggestions
+      - movies list * n
 - netflixGPT 
-    - AI-powered search bar
-    - movie suggestions 
+  - AI-powered search bar
+  - movie suggestions 

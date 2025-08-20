@@ -4,10 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { netflixLogo } from '../../utils/constants';
 import { auth } from '../../utils/firebase';
-import { toggleGPTsearchView } from '../../utils/store/gptSearchSlice';
-import { userLogedIn, userLogOut } from "../../utils/store/usereSlice";
 import { selectLanguageBtnText, SUPPORTED_LANGUAGES } from '../../utils/languageConstant';
 import { changeLanguage } from '../../utils/store/appConfigSlice';
+import { toggleGPTsearchView } from '../../utils/store/gptSearchSlice';
+import { userLogedIn, userLogOut } from "../../utils/store/usereSlice";
 
 const NavBar = () => {
     
@@ -18,7 +18,8 @@ const NavBar = () => {
     const lan           =   useSelector( store => store.appConfig.userLanguage)
     const userName      =   user?.displayName == null ? "user name not provided" : user.displayName
     
-    useEffect( () => {   // we checking authentication every time the page load  and setting up our store if user is logedin update the srote and user is logout remove user info in to the store
+    useEffect( () => {   // we checking authentication every time the page load and setting up our store if user is logedin update the srote and user is logout remove user info in to the store
+        
         const unSubscribe = onAuthStateChanged(auth, (user) => {
             if (user) {
                 // User is signed in, see docs for a list of available properties
@@ -41,6 +42,7 @@ const NavBar = () => {
                 navigate("/")
             }
         }); 
+
         // unSubscribe when component unmounts
         return () => unSubscribe(); 
     }, [])
@@ -54,8 +56,8 @@ const NavBar = () => {
         });
     }
 
-    const handleLanguageChage = (e) =>  dispatch(changeLanguage(e.target.value)) 
-    const handleGPTsearch     = ()  =>  dispatch(toggleGPTsearchView()) 
+    const handleLanguageChage = (e)  =>  dispatch(changeLanguage(e.target.value)) 
+    const handleGPTsearch     = ( )  =>  dispatch(toggleGPTsearchView()) 
 
     return <nav className ={`relative z-[2] overflow-hidden bg-gradient-to-b from-black ${ !user ? `  ` : "" }`}>
         <div className ={`capitalize ${ user && "flex items-center justify-between pr-[5rem]"}`}>

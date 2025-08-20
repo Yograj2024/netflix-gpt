@@ -6,14 +6,15 @@ const HeroSection = () => {
 
     const storeTrailer  =   useSelector( store => store.movies.trailerVideo)
     const moviesList    =   useSelector( store => store.movies?.nowPlayingMovies)
-    const gpt         = useSelector( store => store.gptSearchPage.isShowGPTSearchPage)
-    const user    =   useSelector( store => store.user)
+    const gpt           =   useSelector( store => store.gptSearchPage.isShowGPTSearchPage)
+    const user          =   useSelector( store => store.user)
 
-    const { title, overview, id }    =   moviesList[13]
+    const { title, overview, id }    =   moviesList[3]
 
     useMovieTrailer(id);
  
     return (user && !gpt ) && <>
+
         {/* Background Video */}
         <div className ={`w-full h-[44rem] absolute z-[-1] top-[-30px] overflow-hidden`}>
            <iframe className ={`aspect-video object-cover`} 
@@ -23,6 +24,7 @@ const HeroSection = () => {
             referrerPolicy="strict-origin-when-cross-origin" >
            </iframe>
         </div>
+
         {/* Background video content */}
         <div className ={`px-[5rem] bg-gradient-to-r from-black/40 absolute top-0 h-full flex flex-col justify-end pb-[6rem]`}>
             <h2 className={` text-white text-[2rem] leading-[2.85rem] font-bold mb-[1rem] w-[32rem]`}> { title } </h2>

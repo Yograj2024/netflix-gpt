@@ -15,7 +15,7 @@ const Body = () => {
   useTopRated();
 
   const headerBeforeCss = " before:content-[''] before:h-[37.95rem] before:w-full before:absolute before:inset-0 before:z-[-1] before:bg-cover before:bg-center before:bg-[url('https://assets.nflxext.com/ffe/siteui/vlv3/258d0f77-2241-4282-b613-8354a7675d1a/web/IN-en-20250721-TRIFECTA-perspective_cadc8408-df6e-4313-a05d-daa9dcac139f_medium.jpg')]"
-  const headerAfterCss = "after:content-[''] after:w-full after:absolute after:top-0 after:h-[37.9rem] after:bg-black/60 after:z-[-1]"
+  const headerAfterCss  = " after:content-[''] after:w-full after:absolute after:top-0 after:h-[37.9rem] after:bg-black/60 after:z-[-1]"
 
   return moviesList === null ? <ShimmerUI/> : <>
     <header className ={`relative ${headerAfterCss}
@@ -26,7 +26,7 @@ const Body = () => {
       <Header />
     </header>
 
-    <main className={`${(user && !gpt) && "bg-blue-100"}`}>
+    <main className ={`${(user && !gpt) && "bg-blue-100"}`}>
       <Outlet/>
     </main>
 

@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { gptSearchPageLan } from '../../utils/languageConstant';
 import useGetRecommdtion from '../../customHooks/useGetRecommdtion';
+import { gptSearchPageLan } from '../../utils/languageConstant';
 
 const GPT_SerachBar = () => {
 
@@ -19,11 +19,15 @@ const GPT_SerachBar = () => {
         <div className={`flex items-center justify-center gap-x-[1rem] mt-[2rem]`}>
         <div className={`relative flex-[0_0_32%] group`}>
             <label htmlFor="userDiscription" 
-            className={`${ userInput ? "top-[8%] text-gray-400" : "group-focus-within:top-[8%] group-focus-within:text-[0.9rem] group-focus-within:text-gray-400 top-[26%] text-[1.25rem]"} absolute z-[1] font-semibold tracking-[1px] left-[6%] transition-all duration-200 `}>
-            {gptSearchPageLan[appConfig].gptSearchPlaceHolder}
+                className = {` ${ userInput 
+                    ? "top-[12%] text-gray-500/80 text-[0.8rem]" 
+                    : "group-focus-within:top-[12%] group-gray-within:text-gray-400 top-[35%] text-[0.8rem]" }
+                    absolute z-[1] font-semibold tracking-[1px] left-[6%] transition-all duration-200 text-[0.9rem]`
+                }>
+                {gptSearchPageLan[appConfig].gptSearchPlaceHolder}
             </label>
             <input type="text" id="userDiscription" name="fullName" 
-            className = {` relative placeholder:capitalize placeholder:text-gray-200 outline-none h-[4rem] w-full border-[1px] border-[#605F5E] focus:border-red-600 rounded-[0.3rem] px-[1.5rem] bg-black/40 pt-[1rem] focus:shadow-[0px_0px_5px__5px_rgba(255,0,0,0.3)]`}
+            className = {` relative outline-none h-[4.25rem] w-full border-[1px] border-[#605F5E] focus:border-red-600 rounded-[0.3rem] px-[1.5rem] bg-black/40 pt-[1rem] focus:shadow-[0px_0px_5px__5px_rgba(255,0,0,0.3)]`}
             value={userInput}
             onChange={ (e) => setUserInput( e.target.value)}/>
         </div>

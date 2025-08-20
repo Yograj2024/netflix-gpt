@@ -1,12 +1,5 @@
-# netflix GPT 🎬
-02:48
-
-- create react app using vite
-- configured tailwindcss
-- create login/signin form ui and setup routing
-- Added UI functionality to switch between Sign In and Sign Up forms using React's useState hook.
-- implemented sign/in,up locgic
-- show user profile 
+# 🎬 Netflix GPT
+  AI-powered movie recommendation app inspired by Netflix, built with React, Firebase, and GPT API.
 
 ##  Tech Stack
 
@@ -17,16 +10,17 @@
 - **Custom Hooks**: Modular hooks for fetching movies, trailers, and AI-powered search
 
 # Implemented Event List
-- onClick           :  Used to handle button clicks for form submission and UI interactions.
-- onAnimationEnd    :  Used to remove animation class after effect ends.
-- onSubmit          :
-- onChange          :
+  - onClick         →  Form submit & UI interactions  
+  - onAnimationEnd  →  Remove animation class after effect ends  
+  - onSubmit        →  Handle form submission  
+  - onChange        →  Handle input changes  
 
 # Implemented Hook List
-- useState
-- useRef
-- useNavigate (from react router)
-- useDispatch (from redux)
+- useState  
+- useRef  
+- useEffect  
+- useNavigate (React Router)  
+- useDispatch, useSelector (Redux) 
 
 
 # Form Validation and Rules
@@ -42,7 +36,7 @@
 |  Image URL            |   Must be a valid image link (Only required in Sign Up mode)                      |
 
 
-# Form Authentication (Firebase)
+# 🔐 Form Authentication (Firebase)
   - implement sign in user api
   - Authentication logic is modularized in helperFunctions.js
   - `Located in`: src/components/Login/helperFunctions.js

@@ -1,11 +1,16 @@
 import { useRef, useState } from "react";
 import { leftBtn, rightBtn } from "../../utils/constants";
 import MovieCard from "./MovieCard";
+import useGetCategoryList from "../../customHooks/useGetCategoryList";
 
-const MoviesRow = ({title, movieList}) => {
+const MoviesRow = (props) => {
+    
+    const {category, movieList, fetchUrl} = props
 
     const scrollRef = useRef(null);
     const [isOverflow, setIsOverflow] = useState(false);
+    
+    useGetCategoryList(fetchUrl,category);
 
     const moveOn_X = (scroll_distence) => {
         if(scrollRef.current){
@@ -23,6 +28,7 @@ const MoviesRow = ({title, movieList}) => {
         }
     };
 
+
     return  <div className ={`relative pt-[2rem] w-[90%] m-auto`}>
         {
             isOverflow && <>
@@ -38,7 +44,7 @@ const MoviesRow = ({title, movieList}) => {
             </> 
         }
 
-        <h2 className={`text-[2rem] capitalize font-semibold`} >{title}</h2>
+        <h2 className={`text-[2rem] capitalize font-semibold`} >{category}</h2>
         
         <MovieCard movieList={movieList} sendRef={takeRefFromCard} />
     </div>

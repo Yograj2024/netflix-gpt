@@ -19,22 +19,20 @@ const NavBar = () => {
     const userName      =   user?.displayName == null ? "user name not provided" : user.displayName
     
     useEffect( () => {   // we checking authentication every time the page load and setting up our store if user is logedin update the srote and user is logout remove user info in to the store
-        
+
         const unSubscribe = onAuthStateChanged(auth, (user) => {
+
             if (user) {
-                // User is signed in, see docs for a list of available properties
-                // https://firebase.google.com/docs/reference/js/auth.user
-                const {uid, email, displayName, photoURL} = user;
+                const { uid, email, displayName, photoURL } = user;
                 dispatch(
                     userLogedIn(
                         {
-                            uid:uid, 
-                            email:email, 
-                            displayName:displayName, 
-                            photoURL:photoURL
+                            uid         :  uid, 
+                            email       :  email, 
+                            displayName :  displayName, 
+                            photoURL    :  photoURL
                         }
-                    ) 
-                )
+                ) )
                 navigate("/browse")
             } else {
                 // User is signed out
@@ -59,7 +57,7 @@ const NavBar = () => {
     const handleLanguageChage = (e)  =>  dispatch(changeLanguage(e.target.value)) 
     const handleGPTsearch     = ( )  =>  dispatch(toggleGPTsearchView()) 
 
-    return <nav className ={`relative z-[2] overflow-hidden bg-gradient-to-b from-black ${ !user ? `  ` : "" }`}>
+    return <nav className ={`relative z-[2] overflow-hidden bg-gradient-to-b from-black`}>
         <div className ={`capitalize ${ user && "flex items-center justify-between pr-[5rem]"}`}>
             <div className={`inline-block h-auto w-[12rem] ml-[4rem]`}> <img src={netflixLogo} alt="" className={`h-full w-full  object-cover`}/> </div>
             { /* user icon, name & signout btn*/

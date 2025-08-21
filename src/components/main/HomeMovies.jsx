@@ -1,20 +1,32 @@
 import { useSelector } from "react-redux";
 import GptSearchPage from "./GptSearchPage";
 import MoviesRow from "./MoviesRow";
+import { popularMovieFetchUrl, topRatedMovieFetchUrl, upComingMovieFetchUrl } from "../../utils/constants";
 
 const HomeMovies = () => {
 
-  const trending    =  useSelector( store => store.movies.nowPlayingMovies)
-  const topRated    =  useSelector( store => store.movies.topRatedMovie)
-  const gpt         =  useSelector( store => store.gptSearchPage.isShowGPTSearchPage);
- 
+  const { 
+    nowPlayingMovies, 
+    topRatedMovie, 
+    popularMovie,
+    upComingMovie 
+  } = useSelector((store) => store.movies);
 
-  return !gpt ? 
-    <section className ={`pb-[3rem] pl-[2rem]`}>
-      <MoviesRow title={"trending now"} movieList={trending} />
-      <MoviesRow title={"top rated"} movieList={topRated} />
-    </section> : 
-    <GptSearchPage/>
+  const isShowGPTSearchPage  =  useSelector( store => store.gptSearchPage.isShowGPTSearchPage );
+
+  if (isShowGPTSearchPage) return <GptSearchPage />;
+ 
+  return <section className ={`pb-[3rem] pl-[2rem]`}>
+
+    <MoviesRow category={"trending now"} movieList={nowPlayingMovies} />
+
+    <MoviesRow category={"top rated"} movieList={topRatedMovie} fetchUrl={topRatedMovieFetchUrl} />
+
+    <MoviesRow category={ "popular" } movieList={popularMovie} fetchUrl={popularMovieFetchUrl}  />
+
+    <MoviesRow category={"up coming"} movieList={upComingMovie} fetchUrl={upComingMovieFetchUrl} />
+
+  </section> 
    
 }; 
 

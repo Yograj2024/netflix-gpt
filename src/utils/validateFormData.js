@@ -16,4 +16,4 @@ export  const isFormDataValid = (fullName, email, password, confirmPassword, img
     if(!isPasswordValid)  return "password"
 
     return null;
-}
+}  

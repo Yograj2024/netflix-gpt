@@ -22,11 +22,12 @@ const MovieCard = ({movieList, sendRef}) => {
         }
     }, [sendRef]);
     
-    return movieList && <div ref={scrollRef} className ={`pl-[0.5rem] py-[1rem] w-[95%] m-auto flex gap-x-[2rem] overflow-x-scroll hide-scrollbar`}>
+    return movieList && <div ref={scrollRef} 
+    className ={`lg:pl-[0.5rem] py-[1rem] w-[98%] lg:w-[95%] m-auto flex gap-x-[1rem] lg:gap-x-[2rem] overflow-x-scroll hide-scrollbar`}>
 
         { 
             movieList.map( ({title, poster_path, id} ) => {
-                return poster_path != null && <div key={id} className ={`h-[16rem] w-[11rem] flex-shrink-0`}>
+                return poster_path != null && <div key={id} className ={`h-[12rem] w-[8rem] lg:h-[16rem] lg:w-[11rem] flex-shrink-0`}>
                     <img src={`https://image.tmdb.org/t/p/w500/${poster_path}`} 
                     alt={`moviePoster_${title}`} 
                     className ={`h-full w-full object-cover rounded-[1rem]`}

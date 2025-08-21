@@ -9,28 +9,26 @@ const Login = () => {
   const [isLoginForm , setIsLoginForm] = useState(true)
   const dispatch = useDispatch();
 
-  const email = useRef(null), password = useRef(null), fullName = useRef(null), imgURL = useRef(" "), confirmPassword = useRef(null)
+  const email = useRef(null), password = useRef(null), fullName = useRef(null), confirmPassword = useRef(null)
   const [errorMess, setErrorMess] = useState(null);
 
   const toggleLoginForm = () => setIsLoginForm(!isLoginForm);
 
-  const handleSign_in_up = () => {    // validate the form data
-   
-    const mess = isFormDataValid(...[fullName, email, password, confirmPassword, imgURL].map( field => field.current?.value),isLoginForm);
-    setErrorMess(mess)
-    if(mess){console.log(mess); return};
+  const handleSign_in_up = () => {    
 
-    // sign up/in logic  
     if(!isLoginForm ){
-        signUpLogic(setErrorMess, fullName, email, password, imgURL, confirmPassword, dispatch)
+      const mess = isFormDataValid(...[fullName, email, password, confirmPassword].map( field => field.current?.value),isLoginForm);
+      setErrorMess(mess)
+      if(mess){console.log(errorMess); return};
+      signUpLogic(setErrorMess, fullName, email, password, confirmPassword, dispatch)
     }else{
-        loginLogic(setErrorMess, email, password)
+      loginLogic(setErrorMess, email, password)
     }
   }
 
-  const handleAnimation = () => ['email', 'password', 'fullName', 'confirmPassword', 'imageURL'].includes(errorMess) && setErrorMess(null) ;
+  const handleAnimation = () => ['email', 'password', 'fullName', 'confirmPassword'].includes(errorMess) && setErrorMess(null) ;
 
-  return <div className={`bg-black/75 w-[32%] mx-auto text-white px-[3rem] py-[1rem]`}>
+  return <div className ={`lg:bg-black/75 lg:w-[32%] mx-auto text-white px-[3rem] py-[1rem]`}>
     <h2 className ='text-[1.5rem] font-semibold capitalize'>{isLoginForm ? "sign in" : "sign up"}</h2>
     <form action="" onSubmit = { (e) => e.preventDefault() }>
         <input ref={fullName} type="text" name="fullName" id="" placeholder='full name'
@@ -38,12 +36,7 @@ const Login = () => {
         className ={`${errorMess == 'fullName' && 'shake border-red-500'} ${inputBoxCSS}
          ${isLoginForm ? 'hidden' : 'block'} mt-[1.25rem]`}/>
 
-        <input ref={imgURL} type="text" name="imgURL" id="" placeholder='imageURL'
-        onAnimationEnd={handleAnimation} defaultValue={""}
-        className ={`${errorMess == 'imgURL' && 'shake border-red-500'} ${inputBoxCSS}
-         ${isLoginForm ? 'hidden' : 'block'} mt-[1.25rem]`}/>
-
-        <input ref={email} type="text" name="user_emailORnumber" id="" placeholder='email or mobile number'
+        <input ref={email} type="text" name="user_emailORnumber" id="" placeholder='email'
         onAnimationEnd={handleAnimation}
         className ={`${errorMess == 'email' && 'shake border-red-500'} ${inputBoxCSS} mt-[1.25rem]`} />
 

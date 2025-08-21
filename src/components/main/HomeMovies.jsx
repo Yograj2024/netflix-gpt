@@ -16,7 +16,7 @@ const HomeMovies = () => {
 
   if (isShowGPTSearchPage) return <GptSearchPage />;
  
-  return <section className ={`pb-[3rem] pl-[2rem]`}>
+  return <section className ={`pb-[3rem] lg:pl-[2rem]`}>
 
     <MoviesRow category={"trending now"} movieList={nowPlayingMovies} />
 

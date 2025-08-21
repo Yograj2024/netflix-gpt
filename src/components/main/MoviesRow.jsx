@@ -32,19 +32,19 @@ const MoviesRow = (props) => {
     return  <div className ={`relative pt-[2rem] w-[90%] m-auto`}>
         {
             isOverflow && <>
-                <button className={`bg-red-200 absolute top-[60%] bottom-[50%] translate-y-[-50%] h-[8rem] w-[1.5rem] rounded-[1rem]`}  
+                <button className ={`hidden lg:block bg-red-200 absolute top-[60%] bottom-[50%] translate-y-[-50%] h-[4rem] w-[0.8rem] lg:h-[8rem] lg:w-[1.5rem] rounded-[1rem] left-[-1rem] lg:left-0`}  
                 onClick = { (e) => moveOn_X(-1040)}>
                     <img src={leftBtn} alt="" className={`h-full w-full object-contain`}/>
                 </button>
 
-                <button className={`bg-red-200 absolute top-[60%] bottom-[50%] translate-y-[-50%] h-[8rem] w-[1.5rem] rounded-[1rem] right-[-0.5rem]`} 
+                <button className ={`hidden lg:block bg-red-200 absolute top-[60%] bottom-[50%] translate-y-[-50%] h-[4rem] w-[0.8rem] lg:h-[8rem] lg:w-[1.5rem] rounded-[1rem] right-[-1rem] lg:right-[-0.5rem]`} 
                 onClick = { (e) => moveOn_X(1040)}>
                     <img src={rightBtn} alt="" className={`h-full w-full object-contain`}/>
                 </button>
             </> 
         }
 
-        <h2 className={`text-[2rem] capitalize font-semibold`} >{category}</h2>
+        <h2 className={`text-[1.5rem] lg:text-[2rem] capitalize font-semibold`} >{category}</h2>
         
         <MovieCard movieList={movieList} sendRef={takeRefFromCard} />
     </div>

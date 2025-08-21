@@ -1,4 +1,5 @@
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { userLogedInIcon } from "../../utils/constants";
 import { auth } from '../../utils/firebase';
 import { userLogedIn } from "../../utils/store/usereSlice";
 
@@ -14,17 +15,15 @@ export const loginLogic = (setErrorMess, email, password) => {
     })
     .catch((error) => {
         setErrorMess('loginError')
-        console.log(error)
-        alert(error)
         const errorCode = error.code;
         const errorMessage = error.message;
     });
 }
 
-export const signUpLogic = (setErrorMess, fullName, email, password, imgURL,confirmPassword, dispatch) => {
+export const signUpLogic = (setErrorMess, fullName, email, password,confirmPassword, dispatch) => {
     // signUp logic
     const enterdName = fullName.current?.value
-    const imgUrl = imgURL.current?.value
+    const imgUrl = userLogedInIcon
 
     createUserWithEmailAndPassword(auth, email.current?.value, password.current?.value)
     .then((userCredential) => {

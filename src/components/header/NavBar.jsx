@@ -2,7 +2,7 @@ import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { netflixLogo } from '../../utils/constants';
+import { menuIcon, netflixLogo } from '../../utils/constants';
 import { auth } from '../../utils/firebase';
 import { selectLanguageBtnText, SUPPORTED_LANGUAGES } from '../../utils/languageConstant';
 import { changeLanguage } from '../../utils/store/appConfigSlice';
@@ -46,7 +46,6 @@ const NavBar = () => {
     }, [])
 
     const handleSignOut = () => {
-        console.log("click on signOut")
         signOut(auth).then(() => {
              /* Sign-out successful. */
         }).catch((error) => {
@@ -55,13 +54,16 @@ const NavBar = () => {
     }
 
     const handleLanguageChage = (e)  =>  dispatch(changeLanguage(e.target.value)) 
-    const handleGPTsearch     = ( )  =>  dispatch(toggleGPTsearchView()) 
+    const handleGPTsearch     = ()   =>  dispatch(toggleGPTsearchView()) 
 
     return <nav className ={`relative z-[2] overflow-hidden bg-gradient-to-b from-black`}>
-        <div className ={`capitalize ${ user && "flex items-center justify-between pr-[5rem]"}`}>
-            <div className={`inline-block h-auto w-[12rem] ml-[4rem]`}> <img src={netflixLogo} alt="" className={`h-full w-full  object-cover`}/> </div>
+        <div className ={`capitalize ${ user && "flex items-center justify-between lg:pr-[3rem]"}`}>
+            <div className ={`inline-block h-auto w-[8rem] lg:w-[12rem] lg:ml-[2rem]`}> <img src={netflixLogo} alt="" className={`h-full w-full  object-cover`}/> </div>
+            <div className ={`sm:hidden h-[2rem] aspect-square mr-[1rem]`}>
+                <img src={menuIcon} alt="" className ={`h-full w-full object-cover`}/>
+            </div>
             { /* user icon, name & signout btn*/
-                user  && <div className={`flex items-center gap-x-[1rem] relative z-[2]`}> 
+                user  && <div className={`hidden lg:flex items-center gap-x-[1rem] relative z-[2]`}> 
                     <button onClick = { handleGPTsearch} className={ ` ${!user ? "hidden" : "bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500  text-[1rem] capitalize font-semibold rounded-[8px] text-white px-[12px] py-[3px] "}`}>
                         { !gpt ? "GPT Search" : "Home"}
                     </button>
@@ -74,8 +76,8 @@ const NavBar = () => {
                     <button onClick = { handleSignOut } className = { ` ${!user ? "hidden" : "bg-red-500 text-[1rem] capitalize font-semibold rounded-[8px] text-white px-[12px] py-[3px] "}`}>
                         sign out
                     </button>
-                    <div>
-                        <div className={`h-[4rem] aspect-square`}> <img src={user?.photoURL} alt="user-img" className={`h-full w-full object-cover rounded-[1rem]`} /> </div>
+                    <div className={`flex flex-col items-center`}>
+                        <div className={`h-[3rem] aspect-square`}> <img src={user?.photoURL} alt="user-img" className={`h-full w-full object-cover rounded-[1rem]`} /> </div>
                         <p className={`text-white font-semibold`}>{userName}</p>
                     </div>
                 </div>

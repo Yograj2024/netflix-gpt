@@ -5,7 +5,7 @@ import { loginLogic, signUpLogic } from './helperFunctions';
 
 const Login = () => {
 
-  const inputBoxCSS = `placeholder:capitalize placeholder:text-gray-200 outline-none h-[2.8rem] w-full border-[1px] border-[#605F5E] rounded-[0.45rem] px-[1.5rem] bg-[#605F5E]/20`
+  const inputBoxCSS = `placeholder:capitalize placeholder:text-gray-400/90 outline-none h-[2.8rem] w-full border-[1px] border-[#605F5E] rounded-[0.45rem] px-[1.5rem] bg-[#605F5E]/20`
   const [isLoginForm , setIsLoginForm] = useState(true)
   const dispatch = useDispatch();
 
@@ -28,8 +28,8 @@ const Login = () => {
 
   const handleAnimation = () => ['email', 'password', 'fullName', 'confirmPassword'].includes(errorMess) && setErrorMess(null) ;
 
-  return <div className ={`lg:bg-black/75 lg:w-[32%] mx-auto text-white px-[3rem] py-[1rem]`}>
-    <h2 className ='text-[1.5rem] font-semibold capitalize'>{isLoginForm ? "sign in" : "sign up"}</h2>
+  return <div className ={`bg-black/75 w-[90%] mt-[2rem] lg:mt-0 lg:w-[32%] mx-auto rounded-[1rem] text-white px-[1.5rem] lg:px-[3rem] py-[1rem]`}>
+    <h2 className ='text-[1.5rem] text-center font-semibold capitalize'>{isLoginForm ? "sign in" : "sign up"}</h2>
     <form action="" onSubmit = { (e) => e.preventDefault() }>
         <input ref={fullName} type="text" name="fullName" id="" placeholder='full name'
         onAnimationEnd={handleAnimation}
@@ -58,8 +58,8 @@ const Login = () => {
                 <input type="checkbox" id='remember_me' className={`h-[1.125rem] aspect-square mr-[1rem]`}/>
                 <label htmlFor="remember_me" className={`text-[1.1rem] normal-case`}>Remember me</label>
             </span>
-            <h3 className='my-[0.5rem] text-[1.2rem]'> {isLoginForm ? "new to netflix?" : "all redy have an account "} <span onClick = { toggleLoginForm } className={`underline font-semibold hover:cursor-pointer`}>{isLoginForm ? "sign up now." : "sign in."}</span></h3>
-            <p className={`text-[0.9rem] text-gray-600 font-semibold`}>This page is protected by Google reCAPTCHA to ensure you're not a bot.  
+            <h3 className='my-[0.5rem] lg:text-[1.2rem]'> {isLoginForm ? "new to netflix?" : "all redy have an account "} <span onClick = { toggleLoginForm } className={`underline font-semibold hover:cursor-pointer`}>{isLoginForm ? "sign up now." : "sign in."}</span></h3>
+            <p className={`text-[0.8rem] lg:text-[0.9rem] text-gray-400 lg:text-gray-600 font-semibold`}>This page is protected by Google reCAPTCHA to ensure you're not a bot.  
               <span className={`mt-[0.6rem] ml-[0.5rem] underline text-blue-500 inline`}>
                   learn more
               </span>

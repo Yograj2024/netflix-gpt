@@ -157,7 +157,36 @@
     - Now the API response (movie results) is displayed to the user using MovieRow and MovieCard.
 
 
+# 📱 Sidebar for Mobile Devices
+  - A Sidebar component has been implemented specifically for mobile devices.
+  - This ensures a better navigation experience on smaller screens.
+  - The sidebar will only render when the website is accessed on a mobile device.
 
+# 🛠️ Custom Hook: useDeviceType
+  - Introduced a new custom hook useDeviceType to detect the device type and screen orientation.
+  - Possible values include:
+    - deviceType: mobile | tablet | desktop
+    - orientation: portrait | landscape
+
+# ⚙️ Redux: appConfigSlice Update
+  - Added a new property deviceInfo inside appConfigSlice.
+  - State Structure
+      deviceInfo: {
+        deviceType: '',
+        orientation: ''
+      }
+
+      changeLanguage: (state, action) => {
+        state.userLanguage = action.payload;
+      },
+
+      setDeviceInfo: (state, action) => {
+        const { deviceType, orientation } = action.payload;
+        state.deviceInfo.deviceType  = deviceType;
+        state.deviceInfo.orientation = orientation;
+      }
+
+      
 # features :-
 - login/sign up page
   - Toggle between Sign In / Sign Up

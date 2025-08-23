@@ -16,13 +16,11 @@ const HomeMovies = () => {
 
   if (isShowGPTSearchPage) return <GptSearchPage />;
  
-  return <section className ={`pb-[3rem] lg:pl-[2rem]`}>
+  return <section className ={`pb-[3rem] lg:px-[1.25rem]`}>
 
     <MoviesRow category={"trending now"} movieList={nowPlayingMovies} />
 
     <MoviesRow category={"top rated"} movieList={topRatedMovie} fetchUrl={topRatedMovieFetchUrl} />
-
-    <MoviesRow category={ "popular" } movieList={popularMovie} fetchUrl={popularMovieFetchUrl}  />
 
     <MoviesRow category={"up coming"} movieList={upComingMovie} fetchUrl={upComingMovieFetchUrl} />
 

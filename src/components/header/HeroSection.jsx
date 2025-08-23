@@ -4,9 +4,10 @@ import { moreInfo, playBtn } from "../../utils/constants";
 
 const HeroSection = () => {
 
-    const storeTrailer  =   useSelector( store => store.movies.trailerVideo)
+    const storeTrailer  =   useSelector( store => store.movies?.trailerVideo)
     const moviesList    =   useSelector( store => store.movies?.nowPlayingMovies)
     const gpt           =   useSelector( store => store.gptSearchPage.isShowGPTSearchPage)
+    const deviceType    =   useSelector( store => store.appConfig.deviceInfo.deviceType)
     const user          =   useSelector( store => store.user)
 
     const { title, overview, id }    =   moviesList[3]
@@ -15,15 +16,18 @@ const HeroSection = () => {
  
     return (user && !gpt ) && <>
 
-        {/* Background Video */}
-        <div className ={`hidden lg:block w-full lg:h-[44rem] absolute z-[-1] top-[-30px] overflow-hidden`}>
-           <iframe className ={`aspect-video object-cover`} 
-            src={"https://www.youtube.com/embed/" + storeTrailer + "?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&loop=1&playlist=" + storeTrailer }
-            title="YouTube video player"
-            allow="autoplay; encrypted-media" 
-            referrerPolicy="strict-origin-when-cross-origin" >
-           </iframe>
-        </div>
+        {/* Background Video on md:screen*/}
+        {
+            deviceType !== 'mobile' && 
+            <div className ={`w-full lg:h-[44rem] absolute z-[-1] top-[-30px] overflow-hidden`}>
+                <iframe className ={`aspect-video object-cover`} 
+                    src={"https://www.youtube.com/embed/" + storeTrailer + "?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&loop=1&playlist=" + storeTrailer }
+                    title="YouTube video player"
+                    allow="autoplay; encrypted-media" 
+                    referrerPolicy="strict-origin-when-cross-origin" >
+                </iframe>
+            </div>
+        }
 
         {/* Background video content */}
         <div className ={`px-[1rem] lg:px-[3rem] bg-gradient-to-r from-black/40 absolute top-0 h-full flex flex-col justify-end pb-[2rem] lg:pb-[6rem]`}>

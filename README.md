@@ -170,23 +170,19 @@
 
 # ⚙️ Redux: appConfigSlice Update
   - Added a new property deviceInfo inside appConfigSlice.
-  - State Structure
-      deviceInfo: {
-        deviceType: '',
-        orientation: ''
-      }
+  - State Structure <br/>
+      deviceInfo: {<br/>
+        deviceType: '',<br/>
+        orientation: ''<br/>
+      }<br/>
 
-      changeLanguage: (state, action) => {
-        state.userLanguage = action.payload;
-      },
+      setDeviceInfo: (state, action) => {<br/>
+        const { deviceType, orientation } = action.payload;<br/>
+        state.deviceInfo.deviceType  = deviceType;<br/>
+        state.deviceInfo.orientation = orientation;<br/>
+      }<br/>
 
-      setDeviceInfo: (state, action) => {
-        const { deviceType, orientation } = action.payload;
-        state.deviceInfo.deviceType  = deviceType;
-        state.deviceInfo.orientation = orientation;
-      }
 
-      
 # features :-
 - login/sign up page
   - Toggle between Sign In / Sign Up

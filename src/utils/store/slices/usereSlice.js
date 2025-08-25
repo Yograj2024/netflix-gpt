@@ -9,6 +9,7 @@ const userSlice = createSlice({
         },
         
         userLogOut : (state, action) => {
+            
             return null
         }
     }

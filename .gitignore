@@ -24,7 +24,6 @@ dist-ssr
 *.sw?
 
 shortCodeExplained.md
-constants.js
 post.js
 media
 .VSCodeCounter

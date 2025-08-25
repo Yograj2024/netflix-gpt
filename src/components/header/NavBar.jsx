@@ -56,6 +56,7 @@ const NavBar = ({isSideBar, setSideBar}) => {
     const handleSignOut = () => {
         signOut(auth).then(() => {
              /* Sign-out successful. */
+             dispatch(userLogOut())
         }).catch((error) => {
              /* An error happened. */
         });

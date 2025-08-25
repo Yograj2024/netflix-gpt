@@ -1,4 +1,4 @@
-import GPT_SerachBar from './GPT_SerachBar';
+import GPT_SerachBar from './GPT_SerachSec';
 import GPT_serachResult from './GPT_searchResult';
 
 const GptSearchPage = () => {

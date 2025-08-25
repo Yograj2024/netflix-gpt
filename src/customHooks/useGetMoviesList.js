@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { API_OPTIONS, nowPlayingFetchUrl } from "../utils/constants";
-import { addNowPlayingMovies } from "../utils/store/moviesListSlice";
+import { addNowPlayingMovies } from "../utils/store/slices/moviesListSlice";
 
 const useGetMoviesList = () => {
 

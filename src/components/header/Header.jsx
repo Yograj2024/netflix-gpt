@@ -1,9 +1,9 @@
 import HeroSection from './HeroSection';
 import NavBar from './NavBar';
 
-const Header = () => {
+const Header = ({isSideBar, setSideBar}) => {
     return <>
-      <NavBar/>
+      <NavBar isSideBar={isSideBar} setSideBar={setSideBar}/>
       <HeroSection/>
     </>
 };

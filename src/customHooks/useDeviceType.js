@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { setDeviceInfo } from "../utils/store/appConfigSlice";
+import { setDeviceInfo } from "../utils/store/slices/appConfigSlice";
 
 const getDeviceInfo  = () => {
     const width = window.innerWidth;

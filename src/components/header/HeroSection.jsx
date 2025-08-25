@@ -4,13 +4,13 @@ import { moreInfo, playBtn } from "../../utils/constants";
 
 const HeroSection = () => {
 
-    const storeTrailer  =   useSelector( store => store.movies?.trailerVideo)
-    const moviesList    =   useSelector( store => store.movies?.nowPlayingMovies)
-    const gpt           =   useSelector( store => store.gptSearchPage.isShowGPTSearchPage)
-    const deviceType    =   useSelector( store => store.appConfig.deviceInfo.deviceType)
-    const user          =   useSelector( store => store.user)
+    const storeTrailer  =   useSelector( state => state.movies?.trailerVideo)
+    const moviesList    =   useSelector( state => state.movies?.nowPlayingMovies)
+    const gpt           =   useSelector( state => state.gptSearchPage.isShowGPTSearchPage)
+    const deviceType    =   useSelector( state => state.appConfig.deviceInfo.deviceType)
+    const user          =   useSelector( state => state.user)
 
-    const { title, overview, id }    =   moviesList[3]
+    const { title, overview, id }    =   moviesList[2]
 
     useMovieTrailer(id);
  

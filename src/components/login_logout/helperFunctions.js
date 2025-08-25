@@ -1,7 +1,7 @@
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { userLogedInIcon } from "../../utils/constants";
 import { auth } from '../../utils/firebase';
-import { userLogedIn } from "../../utils/store/usereSlice";
+import { userLogedIn } from "../../utils/store/slices/usereSlice";
 
 export const resetFormValues = (setErrorMess, fieldArr) => {
     fieldArr.forEach(ref => ref.current.value = null); // Reset all form input fields to empty   

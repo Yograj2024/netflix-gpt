@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { API_OPTIONS } from "../utils/constants";
-import { addPopularMovie, addTopRatedMovie, addUpComingMovie } from "../utils/store/moviesListSlice";
+import { addPopularMovie, addTopRatedMovie, addUpComingMovie } from "../utils/store/slices/moviesListSlice";
 
 
 const useGetCategoryList = (fetchUrl, category) => {

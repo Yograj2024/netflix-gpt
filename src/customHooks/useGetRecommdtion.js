@@ -1,5 +1,5 @@
 import { API_OPTIONS, gptQueryPrefix, gptQuerySuffix, gptSearch_API_OPTIONS } from "../utils/constants";
-import { gptRecommendedMovies } from "../utils/store/gptSearchSlice";
+import { gptRecommendedMovies } from "../utils/store/slices/gptSearchSlice";
 
 // search movie on TMDB 
 const searchMovieONTMDB = async (movie) => {

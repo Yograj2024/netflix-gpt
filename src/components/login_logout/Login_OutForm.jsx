@@ -28,7 +28,7 @@ const Login = () => {
 
   const handleAnimation = () => ['email', 'password', 'fullName', 'confirmPassword'].includes(errorMess) && setErrorMess(null) ;
 
-  return <div className ={`bg-black/75 w-[90%] mt-[2rem] lg:mt-0 lg:w-[32%] mx-auto rounded-[1rem] text-white px-[1.5rem] lg:px-[3rem] py-[1rem]`}>
+  return <div className ={`bg-black/75 w-[90%] mt-[8rem] lg:mt-0 lg:w-[32%] mx-auto rounded-[1rem] text-white px-[1.5rem] lg:px-[3rem] py-[1rem]`}>
     <h2 className ='text-[1.5rem] text-center font-semibold capitalize'>{isLoginForm ? "sign in" : "sign up"}</h2>
     <form action="" onSubmit = { (e) => e.preventDefault() }>
         <input ref={fullName} type="text" name="fullName" id="" placeholder='full name'

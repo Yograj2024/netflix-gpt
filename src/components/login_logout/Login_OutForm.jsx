@@ -13,25 +13,21 @@ const Login = () => {
   
   const toggleLoginForm = () => setIsLoginForm(!isLoginForm);
   
-  const handleSign_in_up = () => {   
+  const handleSign_in_up = () => {  
     
-    if(!isLoginForm ){
-      const mess = isFormDataValid(...[fullName, email, password, confirmPassword].map( field => field.current?.value),isLoginForm);
-      setErrorMess(mess)
-      if(mess){console.log(errorMess); return};
-      signUpLogic(setErrorMess, fullName, email, password, confirmPassword, dispatch)
-    }else{
-      const mess = isFormDataValid(
-        null,
-        email.current?.value,
-        password.current?.value,
-        null,
-        isLoginForm
-      );
-      setErrorMess(mess)
-      if(mess){console.log(errorMess); return};
-      loginLogic(setErrorMess, email, password)
+    const funArguments = isLoginForm 
+    ? [null, email.current?.value, password.current?.value, null, isLoginForm] 
+    : [fullName, email, password, confirmPassword].map( field => field.current?.value)
+    
+    const mess = isFormDataValid(...funArguments, isLoginForm);
+    if(mess){ 
+      setErrorMess(mess); 
+      return;
     }
+  
+    isLoginForm  
+    ? loginLogic(setErrorMess, email, password) 
+    : signUpLogic(setErrorMess, fullName, email, password, confirmPassword, dispatch)
   }
   
   const handleAnimation = () => ['email', 'password', 'fullName', 'confirmPassword'].includes(errorMess) && setErrorMess(null) ;

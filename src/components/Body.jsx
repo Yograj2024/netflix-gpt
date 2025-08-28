@@ -1,9 +1,9 @@
 import { useSelector } from "react-redux";
 import { Outlet } from "react-router-dom";
 import useGetMoviesList from "../customHooks/useGetMoviesList";
-import Header from "./header/Header";
 import ShimmerUI from "./ShimmerUI";
-import SideBar from "./SideBar";
+const SideBar = lazy( () => import ("./SideBar"))
+const Header = lazy( () => import ("./header/Header"))
 import useDeviceType from "../customHooks/useDeviceType";
 import { useState } from "react";
 import { getHeaderClasses } from "../utils/constants";

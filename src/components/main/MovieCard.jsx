@@ -29,7 +29,7 @@ const MovieCard = ({movieList, sendRef}) => {
             movieList.map( ({title, poster_path, id} ) => {
                 return poster_path != null && <div key={id} className ={` h-[16rem] lg:h-[16rem] w-[11.4rem] flex-shrink-0`}>
                     <img src={`https://image.tmdb.org/t/p/w500/${poster_path}`} 
-                    alt={`moviePoster_${title}`} 
+                    alt={`moviePoster_${title}`} loading="lazy"
                     className ={`h-full w-full object-cover rounded-[1rem]`}
                     />
                 </div>

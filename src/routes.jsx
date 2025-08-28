@@ -1,8 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
-import Login_OutForm from "./components/login_logout/Login_OutForm";
 import Body from "./components/Body";
-import HomeMovies from "./components/main/HomeMovies";
-import GptSearchPage from "./components/main/GptSearchPage";
+const GptSearchPage = lazy( () => import ("./components/main/GptSearchPage"));
+const HomeMovies = lazy( () => import ("./components/main/HomeMovies"));
+const Login_OutForm = lazy( () => import ("./components/login_logout/Login_OutForm"));
+
 
 const appRoutes = createBrowserRouter([
     {

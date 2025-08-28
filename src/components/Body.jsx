@@ -1,12 +1,12 @@
+import { lazy, useState } from "react";
 import { useSelector } from "react-redux";
 import { Outlet } from "react-router-dom";
+import useDeviceType from "../customHooks/useDeviceType";
 import useGetMoviesList from "../customHooks/useGetMoviesList";
-import ShimmerUI from "./ShimmerUI";
+import { getHeaderClasses } from "../utils/constants";
+import Login from "./login_logout/Login_OutForm";
 const SideBar = lazy( () => import ("./SideBar"))
 const Header = lazy( () => import ("./header/Header"))
-import useDeviceType from "../customHooks/useDeviceType";
-import { useState } from "react";
-import { getHeaderClasses } from "../utils/constants";
 
 const Body = () => {
 
@@ -22,13 +22,24 @@ const Body = () => {
 
   // ✅ Utility function for header classes is getHeaderClasses 
   
-  return moviesList === null ? <ShimmerUI/> : <>
-    <SideBar isSideBar={isSideBarShow} setSideBar={setIsSideBarShow } />
-
+  return  !user ? 
+  <>
     <header className ={getHeaderClasses({ user, gpt, deviceType })} >
       <Header isSideBar={isSideBarShow} setSideBar={setIsSideBarShow} />
     </header>
+  
+    <main className ={`${(user && !gpt) && "bg-blue-100"}`}>
+      <Login/>
+    </main>
+  </>
+  : moviesList !== null && <>
+  
+    {  deviceType == "mobile" && <SideBar isSideBar={isSideBarShow} setSideBar={setIsSideBarShow } /> }
 
+    <header className ={getHeaderClasses({ user, gpt, deviceType }) + "overflow-hidden"} >
+      <Header isSideBar={isSideBarShow} setSideBar={setIsSideBarShow} />
+    </header>
+  
     <main className ={`${(user && !gpt) && "bg-blue-100"}`}>
       <Outlet/>
     </main>

@@ -1,3 +1,4 @@
+import { lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
 import Body from "./components/Body";
 const GptSearchPage = lazy( () => import ("./components/main/GptSearchPage"));

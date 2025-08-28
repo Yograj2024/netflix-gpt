@@ -5,7 +5,7 @@ import { addTrailerVideo } from "../utils/store/slices/moviesListSlice";
 
 
 const useMovieTrailer  = (id) => {
-    
+
     const dispatch     =  useDispatch();
     const getMovieTrailer = async () => {
 
@@ -17,7 +17,7 @@ const useMovieTrailer  = (id) => {
         dispatch(addTrailerVideo(trailer))
     }
 
-    useEffect( () => { getMovieTrailer() }, [])
+    useEffect( () => { getMovieTrailer() }, [id])
 }
 
 export default useMovieTrailer;

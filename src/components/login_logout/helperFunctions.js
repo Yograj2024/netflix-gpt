@@ -42,10 +42,11 @@ export const signUpLogic = (setErrorMess, fullName, email, password,confirmPassw
                     }
                 )
             )
-            resetFormValues(setErrorMess, [email,password,fullName,confirmPassword, imgURL])
+            resetFormValues(setErrorMess, [email,password,fullName,confirmPassword])
         }).catch((error) => {
             // An error occurred
-            setErrorMess(error.message)
+            console.log(error.message)
+            // setErrorMess(error.message)
         });
     }) 
     .catch((error) => {

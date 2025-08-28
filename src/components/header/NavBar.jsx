@@ -1,9 +1,10 @@
-import { onAuthStateChanged, signOut } from 'firebase/auth';
+import { onAuthStateChanged } from 'firebase/auth';
 import { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { menuIcon, netflixLogo } from '../../utils/constants';
 import { auth } from '../../utils/firebase';
+import handleSignOut from "../../utils/handleSignOut";
 import { selectLanguageBtnText, SUPPORTED_LANGUAGES } from '../../utils/languageConstant';
 import { changeLanguage } from '../../utils/store/slices/appConfigSlice';
 import { toggleGPTsearchView } from '../../utils/store/slices/gptSearchSlice';
@@ -14,9 +15,9 @@ const NavBar = ({isSideBar, setSideBar}) => {
     const dispatch      =   useDispatch();
     const navigate      =   useNavigate();
     const location      =   useLocation();
-    const user          =   useSelector( store => store.user );
-    const gpt           =   useSelector( store => store.gptSearchPage.isShowGPTSearchPage );
-    const lan           =   useSelector( store => store.appConfig.userLanguage)
+    const user          =   useSelector( state => state.user );
+    const gpt           =   useSelector( state => state.gptSearchPage.isShowGPTSearchPage );
+    const lan           =   useSelector( state => state.appConfig.userLanguage)
     const userName      =   user?.displayName == null ? "user name not provided" : user.displayName
     
     useEffect( () => {   // we checking authentication every time the page load and setting up our store if user is logedin update the srote and user is logout remove user info in to the store
@@ -46,21 +47,10 @@ const NavBar = ({isSideBar, setSideBar}) => {
     }, [])
 
     useEffect( () => {
-        if(location.pathname == "/browse"){
-            dispatch(toggleGPTsearchView(false))
-        }else{
-            dispatch(toggleGPTsearchView(true))
-        }
+        location.pathname == "/browse/search-with-GPT" 
+        ? dispatch(toggleGPTsearchView(true))
+        : dispatch(toggleGPTsearchView(false))
     }, [location.pathname])
-
-    const handleSignOut = () => {
-        signOut(auth).then(() => {
-             /* Sign-out successful. */
-             dispatch(userLogOut())
-        }).catch((error) => {
-             /* An error happened. */
-        });
-    }
 
     const togleSideBar = () => {
         document.body.style.overflow = "hidden";
@@ -74,8 +64,8 @@ const NavBar = ({isSideBar, setSideBar}) => {
         <div className ={`capitalize flex justify-between items-center ${ user && "flex items-center justify-between lg:pr-[3rem]"}`}>
             <div className ={`inline-block h-auto w-[8rem] lg:w-[12rem] lg:ml-[2rem]`}> <img src={netflixLogo} alt="" className={`h-full w-full  object-cover`}/> </div>
 
-            <div className ={`${isSideBar ? "opacity-0" : "opacity-100"} transition-all duration-300 ease-linear sm:hidden h-[2rem] aspect-square mr-[1rem]`} onClick = { togleSideBar }>
-                <img src={menuIcon} alt="" className ={`h-full w-full object-cover`}/>
+            <div className ={`${isSideBar ? "opacity-0" : "opacity-100"} ${user ? "block" : "hidden"} transition-all duration-300 ease-linear sm:hidden h-[2rem] aspect-square mr-[1rem]`} onClick = { togleSideBar }>
+                <img src={menuIcon} alt="menuIcon" className ={`h-full w-full object-cover`}/>
             </div>
             { /* user icon, name & signout btn*/
                 user  && <div className={`hidden lg:flex items-center gap-x-[1rem] relative z-[2]`}> 

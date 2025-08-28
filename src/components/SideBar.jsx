@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { cancleIcon, GPTSerachIcon, homeIcon, languageIcon, playListIcon, signOutIcon } from '../utils/constants';
+import handleSignOut from '../utils/handleSignOut';
 
 const SideBar = ({isSideBar, setSideBar}) => {
 
@@ -9,9 +10,10 @@ const SideBar = ({isSideBar, setSideBar}) => {
   const userName = useSelector( store => store.user?.displayName)
   const userEmail = useSelector( store => store.user?.email)
 
-  const sideBarHide = () => {
+  const sideBarHide = (e) => {
     document.body.style.overflow = "auto";
     setSideBar(false)
+    e.target.className.includes("sighOut") && handleSignOut()
   }
 
   return deviceType == 'mobile' && <div className ={`${ isSideBar ? " left-0 opacity-100" : "left-[-100%] opacity-0" } 
@@ -54,8 +56,9 @@ const SideBar = ({isSideBar, setSideBar}) => {
           <span>playlist</span>
         </li>
         <li className ={`text-[1.125rem] grid grid-cols-[12%_auto] items-center pl-[1rem] py-[0.5rem] rounded-[0.4rem] active:bg-orange-200`}>
-          <span className ={`inline-block mr-[0.785rem] h-[1.56rem] aspect-square`}> <img src={signOutIcon} alt=""  className={`h-full w-full object-cover`}/> </span>
-          <span>sigh out</span>
+          <span className ={`inline-block mr-[0.785rem] h-[1.56rem] aspect-square`}> 
+            <img src={signOutIcon} alt=""  className={`sighOut h-full w-full object-cover`}/> </span>
+          <span className={`sighOut`}>sigh out</span>
         </li>
       </ul>
     </div>

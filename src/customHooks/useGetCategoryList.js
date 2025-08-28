@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { API_OPTIONS } from "../utils/constants";
-import { addPopularMovie, addTopRatedMovie, addUpComingMovie } from "../utils/store/slices/moviesListSlice";
+import { addTopRatedMovie, addUpComingMovie } from "../utils/store/slices/moviesListSlice";
 
 
 const useGetCategoryList = (fetchUrl, category) => {
@@ -10,21 +10,17 @@ const useGetCategoryList = (fetchUrl, category) => {
 
     const fetchMovies  = async () => {
         try {
-            const data         = await fetch(fetchUrl, API_OPTIONS);
-            const json         = await data.json();
-            const topRatedMovieList = json.results;
+            const data       =  await fetch(fetchUrl, API_OPTIONS);
+            const json       =  await data.json();
+            const movieList  =  json.results;
             
             switch(category){
                 case "top rated" : 
-                    dispatch(addTopRatedMovie(topRatedMovieList))
-                    break;
-
-                case "popular" : 
-                    dispatch(addPopularMovie(topRatedMovieList))
+                    dispatch(addTopRatedMovie(movieList))
                     break;
 
                 case "up coming" : 
-                    dispatch(addUpComingMovie(topRatedMovieList))
+                    dispatch(addUpComingMovie(movieList))
                     break;
 
                 default:

@@ -12,7 +12,7 @@ const appReducers = combineReducers( {
 });
 
 const rootReducer = (state, action) => {
-    if(action.type === "/user/userLogOut"){
+    if(action.type === "RESET_APP"){
         state = undefined
     }
 

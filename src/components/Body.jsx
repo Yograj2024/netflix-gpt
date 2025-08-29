@@ -10,10 +10,11 @@ const Header = lazy( () => import ("./header/Header"))
 
 const Body = () => {
 
-  const user        =  useSelector( store => store.user)
-  const moviesList  =  useSelector( store => store.movies?.nowPlayingMovies)
-  const gpt         =  useSelector( store => store.gptSearchPage.isShowGPTSearchPage)
-  const deviceType  =  useSelector( store => store.appConfig.deviceInfo.deviceType)
+  const user        =  useSelector( state => state.user)
+  const poster      =  useSelector( state => state.movieMedia?.posterLink)
+  const moviesList  =  useSelector( state => state.movies?.nowPlayingMovies)
+  const gpt         =  useSelector( state => state.gptSearchPage.isShowGPTSearchPage)
+  const deviceType  =  useSelector( state => state.appConfig.deviceInfo.deviceType)
 
   const [isSideBarShow, setIsSideBarShow] = useState(false)
   
@@ -24,7 +25,7 @@ const Body = () => {
   
   return  !user ? 
   <>
-    <header className ={getHeaderClasses({ user, gpt, deviceType })} >
+    <header className ={``} >
       <Header isSideBar={isSideBarShow} setSideBar={setIsSideBarShow} />
     </header>
   
@@ -36,7 +37,7 @@ const Body = () => {
   
     {  deviceType == "mobile" && <SideBar isSideBar={isSideBarShow} setSideBar={setIsSideBarShow } /> }
 
-    <header className ={getHeaderClasses({ user, gpt, deviceType }) + "overflow-hidden"} >
+    <header className ={``} >
       <Header isSideBar={isSideBarShow} setSideBar={setIsSideBarShow} />
     </header>
   

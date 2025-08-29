@@ -1,17 +1,17 @@
-import { useSelector } from "react-redux";
-import useMovieTrailer from "../../customHooks/useMovieTrailer";
-import { moreInfo, playBtn } from "../../utils/constants";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import useSetMovieMedia from "../../customHooks/useSetMovieMedia";
+import { moreInfo, playBtn } from "../../utils/constants";
 
 const HeroSection = () => {
 
-    const storeTrailer  =   useSelector( state => state.movies?.trailerVideo)
+    const storeTrailer  =   useSelector( state => state.movieMedia?.trailerLink)
     const moviesList    =   useSelector( state => state.movies?.nowPlayingMovies)
     const gpt           =   useSelector( state => state.gptSearchPage.isShowGPTSearchPage)
     const deviceType    =   useSelector( state => state.appConfig.deviceInfo.deviceType)
     const user          =   useSelector( state => state.user)
 
-    const [movieDetail, setMovieDetail] = useState(null)
+    const [movieDetail, setMovieDetail] = useState({})
 
     useEffect( () => {
         
@@ -19,20 +19,21 @@ const HeroSection = () => {
 
         // ek random movie turant set kar do (pehle render par)
         const randomIndex = Math.floor( Math.random() * moviesList.length);
-        const { title, overview, id }    =   moviesList[randomIndex]
-        setMovieDetail({ title, overview, id } )
+        const { title, overview, id, poster_path }    =   moviesList[randomIndex]
+
+        setMovieDetail({ title, overview, id, poster_path} )
 
          // fir har 50 sec me update karo
         const intervel = setInterval ( () => {
             const randomIndex = Math.floor( Math.random() * moviesList.length);
-            const { title, overview, id }    =   moviesList[randomIndex]
-            setMovieDetail({ title, overview, id } )
+            const { title, overview, id, poster_path }    =   moviesList[randomIndex]
+            setMovieDetail({ title, overview, id, poster_path } )
         }, 50000);
 
         return () => clearInterval(intervel)
     },[moviesList])
     
-    useMovieTrailer(movieDetail?.id);
+    useSetMovieMedia(movieDetail?.id, movieDetail?.poster_path);
  
     return (user && !gpt ) && <>
 

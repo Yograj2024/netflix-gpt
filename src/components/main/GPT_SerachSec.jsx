@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import useGetRecommdtion from '../../customHooks/useGetRecommdtion';
+import getRecommdtion from '../../customHooks/getRecommendation';
 import { gptSearchPageLan } from '../../utils/languageConstant';
 
 const GPT_SerachSec = () => {
@@ -9,7 +9,7 @@ const GPT_SerachSec = () => {
     const dispatch  = useDispatch()
     const [userInput, setUserInput] = useState("");
 
-    const handleSearch = () => useGetRecommdtion(userInput, dispatch) 
+    const handleSearch = () => getRecommdtion(userInput, dispatch) 
 
     return <div className ={`pt-[14rem] lg:pt-[10rem] text-white capitalize`}>
         <h2 className ={`text-center text-[1.525rem] lg:text-[3.25rem] font-bold ${ language != 'en' ? "lg:leading-[5rem]" : 'lg:leading-[4rem]'} lg:px-[18rem]`}>{gptSearchPageLan[language].h2}</h2>

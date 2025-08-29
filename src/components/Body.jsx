@@ -3,10 +3,11 @@ import { useSelector } from "react-redux";
 import { Outlet } from "react-router-dom";
 import useDeviceType from "../customHooks/useDeviceType";
 import useGetMoviesList from "../customHooks/useGetMoviesList";
-import { getHeaderClasses } from "../utils/constants";
-import Login from "./login_logout/Login_OutForm";
-const SideBar = lazy( () => import ("./SideBar"))
-const Header = lazy( () => import ("./header/Header"))
+import Footer from "./footer/Footer";
+
+const Login    =  lazy( () => import ("./login_logout/Login_OutForm"))
+const SideBar  =  lazy( () => import ("./SideBar"))
+const Header   =  lazy( () => import ("./header/Header"))
 
 const Body = () => {
 
@@ -69,7 +70,7 @@ const Body = () => {
     </main>
 
     <footer>
-
+      <Footer/>
     </footer>
   </>
 };

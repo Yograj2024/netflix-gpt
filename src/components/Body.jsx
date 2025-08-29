@@ -25,11 +25,19 @@ const Body = () => {
   
   return  !user ? 
   <>
-    <header className ={``} >
+    <header className ={`relative before:content-[""] 
+      before:absolute  before:w-full
+      before:h-[100vh] before:z-[-2]
+      before:bg-[url('https://assets.nflxext.com/ffe/siteui/vlv3/258d0f77-2241-4282-b613-8354a7675d1a/web/IN-en-20250721-TRIFECTA-perspective_cadc8408-df6e-4313-a05d-daa9dcac139f_medium.jpg')]
+      before:bg-cover before:bg-center
+      after:content-[""] after:absolute 
+      after:h-[100vh] after:w-full
+      after:z-[-1] after:bg-black/40 `
+    }>
       <Header isSideBar={isSideBarShow} setSideBar={setIsSideBarShow} />
     </header>
   
-    <main className ={`${(user && !gpt) && "bg-blue-100"}`}>
+    <main className ={`${!user && (deviceType == "mobile" ? `pt-[8rem]` : `pt-[5rem]`)}`}>
       <Login/>
     </main>
   </>
@@ -37,11 +45,26 @@ const Body = () => {
   
     {  deviceType == "mobile" && <SideBar isSideBar={isSideBarShow} setSideBar={setIsSideBarShow } /> }
 
-    <header className ={``} >
+    <header className ={`
+      ${!gpt 
+      ?` h-[39rem]
+        ${ deviceType == "mobile" && `relative
+            before:content-[""] before:h-full
+            before:w-full before:absolute before:z-[-2]
+            before:bg-[url('https://assets.nflxext.com/ffe/siteui/vlv3/258d0f77-2241-4282-b613-8354a7675d1a/web/IN-en-20250721-TRIFECTA-perspective_cadc8408-df6e-4313-a05d-daa9dcac139f_medium.jpg')]
+        `}
+      ` 
+      : `relative before:content-[""] before:h-[100vh]
+      before:w-full before:absolute before:z-[-2]
+      before:bg-[url('https://assets.nflxext.com/ffe/siteui/vlv3/258d0f77-2241-4282-b613-8354a7675d1a/web/IN-en-20250721-TRIFECTA-perspective_cadc8408-df6e-4313-a05d-daa9dcac139f_medium.jpg')]
+      after:content-[""] after:absolute 
+      after:h-[100vh] after:w-full
+      after:z-[-1] after:bg-black/50  `
+      }`} >
       <Header isSideBar={isSideBarShow} setSideBar={setIsSideBarShow} />
     </header>
   
-    <main className ={`${(user && !gpt) && "bg-blue-100"}`}>
+    <main className ={`${(user && !gpt) && "bg-blue-100 "}`}>
       <Outlet/>
     </main>
 

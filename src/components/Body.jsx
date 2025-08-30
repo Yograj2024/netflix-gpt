@@ -4,6 +4,8 @@ import { Outlet } from "react-router-dom";
 import useDeviceType from "../customHooks/useDeviceType";
 import useGetMoviesList from "../customHooks/useGetMoviesList";
 import Footer from "./footer/Footer";
+import handleHeaderClasses from "../utils/handleHeaderClasses";
+import { use } from "react";
 
 const Login    =  lazy( () => import ("./login_logout/Login_OutForm"))
 const SideBar  =  lazy( () => import ("./SideBar"))
@@ -26,16 +28,8 @@ const Body = () => {
   
   return  !user ? 
   <>
-    <header className ={`relative before:content-[""] 
-      before:absolute  before:w-full
-      before:h-[100vh] before:z-[-2]
-      before:bg-[url('https://assets.nflxext.com/ffe/siteui/vlv3/258d0f77-2241-4282-b613-8354a7675d1a/web/IN-en-20250721-TRIFECTA-perspective_cadc8408-df6e-4313-a05d-daa9dcac139f_medium.jpg')]
-      before:bg-cover before:bg-center
-      after:content-[""] after:absolute 
-      after:h-[100vh] after:w-full
-      after:z-[-1] after:bg-black/40 `
-    }>
-      <Header isSideBar={isSideBarShow} setSideBar={setIsSideBarShow} />
+    <header className ={handleHeaderClasses(user)}>
+      <Header />
     </header>
   
     <main className ={`${!user && (deviceType == "mobile" ? `pt-[8rem]` : `pt-[5rem]`)}`}>
@@ -46,22 +40,7 @@ const Body = () => {
   
     {  deviceType == "mobile" && <SideBar isSideBar={isSideBarShow} setSideBar={setIsSideBarShow } /> }
 
-    <header className ={`
-      ${!gpt 
-      ?` h-[39rem]
-        ${ deviceType == "mobile" && `relative
-            before:content-[""] before:h-full
-            before:w-full before:absolute before:z-[-2]
-            before:bg-[url('https://assets.nflxext.com/ffe/siteui/vlv3/258d0f77-2241-4282-b613-8354a7675d1a/web/IN-en-20250721-TRIFECTA-perspective_cadc8408-df6e-4313-a05d-daa9dcac139f_medium.jpg')]
-        `}
-      ` 
-      : `relative before:content-[""] before:h-[100vh]
-      before:w-full before:absolute before:z-[-2]
-      before:bg-[url('https://assets.nflxext.com/ffe/siteui/vlv3/258d0f77-2241-4282-b613-8354a7675d1a/web/IN-en-20250721-TRIFECTA-perspective_cadc8408-df6e-4313-a05d-daa9dcac139f_medium.jpg')]
-      after:content-[""] after:absolute 
-      after:h-[100vh] after:w-full
-      after:z-[-1] after:bg-black/50  `
-      }`} >
+    <header className ={handleHeaderClasses(user,gpt, deviceType)} >
       <Header isSideBar={isSideBarShow} setSideBar={setIsSideBarShow} />
     </header>
   

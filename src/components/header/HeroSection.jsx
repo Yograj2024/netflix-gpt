@@ -26,7 +26,7 @@ const HeroSection = () => {
          // fir har 50 sec me update karo
         const intervel = setInterval ( () => {
             const randomIndex = Math.floor( Math.random() * moviesList.length);
-            const { title, overview, id,  }    =   moviesList[randomIndex]
+            const { title, overview, id, poster_path }    =   moviesList[randomIndex]
             setMovieDetail({ title, overview, id, poster_path } )
         }, 50000);
 

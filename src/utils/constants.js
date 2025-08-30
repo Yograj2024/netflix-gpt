@@ -70,23 +70,20 @@ export const footerLinkSec = [
     ]
   },
   {
-    title : "quick links",
+    title : "resources",
     li_items : [
-      {text:"home"},
-      {text:"gpt serach"},
-      {text:"trending"},
-      {text:"profile"},
-      {text:"favorites"},
+      {text:"googel firebase"},
+      {
+        text:"flaticon for icons",
+        link : "https://www.flaticon.com/"
+      },
     ]
   },
   {
-    title : "quick links",
+    title : "support",
     li_items : [
-      {text:"home"},
-      {text:"gpt serach"},
-      {text:"trending"},
-      {text:"profile"},
-      {text:"favorites"},
+      {text:"contact"},
+      {text:"feedback"},
     ]
   },
 ]

@@ -3,9 +3,9 @@ import { useSelector } from "react-redux";
 import { Outlet } from "react-router-dom";
 import useDeviceType from "../customHooks/useDeviceType";
 import useGetMoviesList from "../customHooks/useGetMoviesList";
-import Footer from "./footer/Footer";
 import handleHeaderClasses from "../utils/handleHeaderClasses";
-import { use } from "react";
+import Footer from "./footer/Footer";
+import MovieDetails from "./main/MovieDetails";
 
 const Login    =  lazy( () => import ("./login_logout/Login_OutForm"))
 const SideBar  =  lazy( () => import ("./SideBar"))
@@ -20,7 +20,7 @@ const Body = () => {
   const deviceType  =  useSelector( state => state.appConfig.deviceInfo.deviceType)
 
   const [isSideBarShow, setIsSideBarShow] = useState(false)
-  
+
   useGetMoviesList();
   useDeviceType();
 
@@ -40,11 +40,13 @@ const Body = () => {
   
     {  deviceType == "mobile" && <SideBar isSideBar={isSideBarShow} setSideBar={setIsSideBarShow } /> }
 
-    <header className ={handleHeaderClasses(user,gpt, deviceType)} >
+    <header className ={" mobileHeader " + handleHeaderClasses(user,gpt, deviceType, poster)} style={ deviceType === "mobile" && poster ? {"--poster-url" : `url(${poster})`} : {} }>
       <Header isSideBar={isSideBarShow} setSideBar={setIsSideBarShow} />
     </header>
-  
+
+    
     <main className ={`${(user && !gpt) && "bg-blue-100 "}`}>
+      <MovieDetails />
       <Outlet/>
     </main>
 

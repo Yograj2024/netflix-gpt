@@ -28,7 +28,7 @@ const HeroSection = () => {
             const randomIndex = Math.floor( Math.random() * moviesList.length);
             const { title, overview, id, poster_path }    =   moviesList[randomIndex]
             setMovieDetail({ title, overview, id, poster_path } )
-        }, 50000);
+        }, deviceType !== "mobile" ? 50000 : 10000);
 
         return () => clearInterval(intervel)
     },[moviesList])
@@ -71,6 +71,6 @@ const HeroSection = () => {
             </div>
         </div>
     </>
-};
+};   
 
 export default HeroSection;

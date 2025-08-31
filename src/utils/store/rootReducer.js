@@ -3,6 +3,7 @@ import appConfigeReducer from "./slices/appConfigSlice";
 import gptSerachReducer from "./slices/gptSearchSlice";
 import movieMediaReducer from "./slices/movieMediaSlice";
 import moviesListReducer from "./slices/moviesListSlice";
+import movieInfoReducer from "./slices/selectMovieDetailSlice";
 import userReducer from "./slices/usereSlice";
 
 const appReducers = combineReducers( {
@@ -10,7 +11,8 @@ const appReducers = combineReducers( {
     movies  : moviesListReducer,
     appConfig     : appConfigeReducer,
     movieMedia    : movieMediaReducer,
-    gptSearchPage : gptSerachReducer,
+    movieInfo     : movieInfoReducer,
+    gptSearchPage : gptSerachReducer
 });
 
 const rootReducer = (state, action) => {

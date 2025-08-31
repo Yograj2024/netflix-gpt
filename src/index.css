@@ -13,3 +13,7 @@
 .hide-scrollbar::-webkit-scrollbar {
   display: none; 
 }
+
+.mobileHeader::before{
+  background-image: var(--poster-url);
+}

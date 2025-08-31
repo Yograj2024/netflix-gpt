@@ -5,10 +5,10 @@ import handleSignOut from '../utils/handleSignOut';
 
 const SideBar = ({isSideBar, setSideBar}) => {
 
-  const deviceType = useSelector( store => store.appConfig.deviceInfo.deviceType)
-  const userImg = useSelector( store => store.user?.photoURL)
-  const userName = useSelector( store => store.user?.displayName)
-  const userEmail = useSelector( store => store.user?.email)
+  const deviceType =  useSelector( state => state.appConfig.deviceInfo.deviceType)
+  const userImg    =  useSelector( state => state.user?.photoURL)
+  const userName   =  useSelector( state => state.user?.displayName)
+  const userEmail  =  useSelector( state => state.user?.email)
 
   const sideBarHide = (e) => {
     document.body.style.overflow = "auto";

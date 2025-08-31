@@ -22,6 +22,7 @@ const MovieCard = ({movieList, sendRef}) => {
     const handleClick = (info) => {
         dispatch(setSelectedMovieInfo(info)) 
         dispatch(setIsShow(true))
+        document.body.style.overflow = "hidden"
     }
 
     useEffect( () => {

@@ -29,7 +29,7 @@ const MoviesRow = (props) => {
     };
 
 
-    return  <div className ={`relative pt-[2rem] w-[90%] lg:w-full m-auto`}>
+    return  <div className ={`relative pt-[2rem] max-w-[1440px] w-[90%] lg:w-full m-auto`}>
         {
             isOverflow && <>
                 <button className ={`hidden lg:block bg-red-200 absolute top-[60%] bottom-[50%] translate-y-[-50%] h-[4rem] w-[0.8rem] lg:h-[8rem] lg:w-[1.5rem] rounded-[1rem] left-[-1rem] lg:left-0`}  

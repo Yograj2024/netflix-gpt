@@ -40,7 +40,7 @@ const HeroSection = () => {
         {/* Background Video on md:screen*/}
         {
             deviceType !== 'mobile' && 
-            <div className ={` w-full h-[47rem] absolute z-[-1] top-[-120px] overflow-hidden`}>
+            <div className ={`max-w-[1440px] m-auto w-full h-[47rem] absolute z-[-1] top-[-120px] overflow-hidden`}>
                 <div className ={`w-[calc(100%+18rem)] h-full`}>
                     <iframe className ={`aspect-video object-cover overflow-hidden`} 
                         src={"https://www.youtube.com/embed/" + storeTrailer + "?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&loop=1&playlist=" + storeTrailer }
@@ -53,7 +53,7 @@ const HeroSection = () => {
         }
 
         {/* Background video content */}
-        <div className ={`px-[1rem] lg:px-[3rem] bg-black/40 absolute top-0 h-[39rem] w-full flex flex-col justify-end pb-[4rem] lg:pb-[6rem]`}>
+        <div className ={`max-w-[1440px] m-auto px-[1rem] lg:px-[3rem] bg-black/40 absolute top-0 h-[39rem] w-full flex flex-col justify-end pb-[4rem] lg:pb-[6rem]`}>
 
             <h2 className ={` text-white text-[1.5rem] text-center font-bold mb-[1rem] lg:text-left lg:text-[2rem] lg:leading-[2.85rem] lg:w-[32rem]`}> { movieDetail?.title } </h2>
 

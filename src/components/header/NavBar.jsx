@@ -60,7 +60,7 @@ const NavBar = ({isSideBar, setSideBar}) => {
     const handleLanguageChage = (e)  =>  dispatch(changeLanguage(e.target.value)) 
     const handleGPTsearch     = ()   =>  dispatch(toggleGPTsearchView(!gpt)) 
 
-    return <nav className ={`fixed w-full pt-[1rem] lg:pt-0 z-[2] overflow-hidden bg-gradient-to-b from-black`}>
+    return <nav className ={`max-w-[1440px] fixed w-full pt-[1rem] lg:pt-0 z-[2] overflow-hidden bg-gradient-to-b from-black`}>
         <div className ={`capitalize flex justify-between items-center ${ user && "flex items-center justify-between lg:pr-[3rem]"}`}>
             <div className ={`inline-block h-auto w-[8rem] lg:w-[12rem] lg:ml-[2rem]`}> <img src={netflixLogo} alt="netflixLogo img" loading='lazy' className={`h-full w-full  object-cover`}/> </div>
 

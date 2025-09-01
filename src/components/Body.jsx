@@ -28,7 +28,7 @@ const Body = () => {
   
   return  !user ? 
   <>
-    <header className ={handleHeaderClasses(user)}>
+    <header className ={`max-w-[1440px] m-auto ${handleHeaderClasses(user)}`}>
       <Header />
     </header>
   
@@ -40,7 +40,7 @@ const Body = () => {
   
     {  deviceType == "mobile" && <SideBar isSideBar={isSideBarShow} setSideBar={setIsSideBarShow } /> }
 
-    <header className ={" mobileHeader " + handleHeaderClasses(user,gpt, deviceType, poster)} style={ deviceType === "mobile" && poster ? {"--poster-url" : `url(${poster})`} : {"--poster-url" : `url('https://assets.nflxext.com/ffe/siteui/vlv3/258d0f77-2241-4282-b613-8354a7675d1a/web/IN-en-20250721-TRIFECTA-perspective_cadc8408-df6e-4313-a05d-daa9dcac139f_medium.jpg')`} }>
+    <header className ={" mobileHeader max-w-[1440px] m-auto" + handleHeaderClasses(user,gpt, deviceType, poster)} style={ deviceType === "mobile" && poster ? {"--poster-url" : `url(${poster})`} : {"--poster-url" : `url('https://assets.nflxext.com/ffe/siteui/vlv3/258d0f77-2241-4282-b613-8354a7675d1a/web/IN-en-20250721-TRIFECTA-perspective_cadc8408-df6e-4313-a05d-daa9dcac139f_medium.jpg')`} }>
       <Header isSideBar={isSideBarShow} setSideBar={setIsSideBarShow} />
     </header>
 

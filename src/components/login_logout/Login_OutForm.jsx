@@ -34,7 +34,7 @@ const Login = () => {
 
   const inputBoxCSS = `placeholder:capitalize placeholder:text-gray-400/90 outline-none h-[2.8rem] w-full border-[1px] border-[#605F5E] rounded-[0.45rem] px-[1.5rem] bg-[#605F5E]/20 mt-[1.25rem]`
 
-  return <div className ={`bg-black/75 w-[90%] mt-[1rem] lg:mt-0 lg:w-[28%] mx-auto rounded-[1rem] text-white px-[2rem] py-[1rem]`}>
+  return <div className ={`bg-black/75 max-w-[25rem]  w-[90%] mt-[1rem] lg:mt-0 lg:w-[28%] mx-auto rounded-[1rem] text-white px-[2rem] py-[1rem]`}>
     <h2 className ='text-[1.5rem] text-center font-semibold capitalize'>{isLoginForm ? "sign in" : "sign up"}</h2>
     <form action="" onSubmit = { (e) => e.preventDefault() }>
         <input ref={fullName} type="text" name="fullName" id="" placeholder='full name'

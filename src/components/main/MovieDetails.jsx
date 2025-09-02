@@ -22,7 +22,8 @@ const MovieDetails = () => {
     title, overview, 
     original_language, 
     vote_average, 
-    release_date
+    release_date,
+    poster_path
   } = movieInfo || ""
 
   return (movieInfo !== null && isShowMovieInfo) && 
@@ -30,14 +31,14 @@ const MovieDetails = () => {
     <div className  ={`bg-white h-[28rem] lg:h-[35rem] w-[86%] lg:w-[36rem] text-black rounded-[1.5rem] p-[5px]`}>
 
       <div className ={`relative h-[50%] lg:h-[60%]`}>{/* image */} 
-        <img src={"https://image.tmdb.org/t/p/w500" + backdrop_path} alt="" className ={`h-full w-full object-cover rounded-t-[1.25rem]`}/>
+        <img src={"https://image.tmdb.org/t/p/w500" + (backdrop_path == null ? poster_path : backdrop_path)} alt="" className ={`h-full w-full object-cover rounded-t-[1.25rem]`}/>
         <h2 className  ={`absolute bottom-[0.5rem] lg:bottom-[1rem] text-white pl-[1rem] line-clamp-1 text-[1.35rem] lg:text-[3rem] font-semibold`}>{title}</h2>
       </div>
 
       <div className ={` h-[50%] lg:h-[40%] rounded-b-[1.25rem] pt-[1rem] px-[0.8rem]`}>
 
         <ul className ={`flex items-center gap-x-[1rem] mb-[1rem] `}>
-          <li className ={`bg-red-300 px-[18px] rounded-[5px]`}>{release_date.split("-")[0]}</li>
+          <li className ={`bg-red-300 px-[18px] rounded-[5px]`}>{release_date == "" ? "..." : release_date.split("-")[0]}</li>
           <li className ={`bg-red-300 px-[18px] rounded-[5px]`}>{vote_average.toFixed(1)}</li>
           <li className ={`bg-red-300 px-[18px] rounded-[5px]`}>{getLanuageName(original_language)}</li>
         </ul>

@@ -60,8 +60,8 @@ const NavBar = ({isSideBar, setSideBar}) => {
     const handleLanguageChage = (e)  =>  dispatch(changeLanguage(e.target.value)) 
     const handleGPTsearch     = ()   =>  dispatch(toggleGPTsearchView(!gpt)) 
 
-    return <nav className ={`max-w-[1440px] fixed w-full pt-[1rem] lg:pt-0 z-[2] overflow-hidden bg-gradient-to-b from-black`}>
-        <div className ={`capitalize flex justify-between items-center ${ user && "flex items-center justify-between lg:pr-[3rem]"}`}>
+    return <nav className ={`fixed w-full pt-[1rem] lg:pt-0 z-[2] overflow-hidden bg-gradient-to-b from-black`}>
+        <div className ={`capitalize max-w-[1440px] m-auto flex justify-between items-center ${ user && "flex items-center justify-between lg:pr-[3rem]"}`}>
             <div className ={`inline-block h-auto w-[8rem] lg:w-[12rem] lg:ml-[2rem]`}> <img src={netflixLogo} alt="netflixLogo img" loading='lazy' className={`h-full w-full  object-cover`}/> </div>
 
             <div className ={`${isSideBar ? "opacity-0" : "opacity-100"} ${user ? "block" : "hidden"} transition-all duration-300 ease-linear sm:hidden h-[2rem] aspect-square mr-[1rem]`} onClick = { togleSideBar }>

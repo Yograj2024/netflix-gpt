@@ -9,14 +9,17 @@ const GPT_SerachSec = () => {
     const dispatch  = useDispatch()
     const [userInput, setUserInput] = useState("");
 
-    const handleSearch = () => getRecommdtion(userInput, dispatch) 
+    const handleSearch = (e) => { 
+        e.preventDefault()
+        getRecommdtion(userInput, dispatch) 
+    }
 
-    return <div className ={`pt-[14rem] lg:pt-[10rem] text-white capitalize`}>
+    return <div className ={`pt-[14rem] max-w-[1440px] m-auto lg:pt-[10rem] text-white capitalize`}>
         <h2 className ={`text-center text-[1.525rem] lg:text-[3.25rem] font-bold ${ language != 'en' ? "lg:leading-[5rem]" : 'lg:leading-[4rem]'} lg:px-[18rem]`}>{gptSearchPageLan[language].h2}</h2>
         <p className={`text-center text-[0.975rem] lg:text-[1.125rem] font-bold my-[1rem]`}>{gptSearchPageLan[language].p}</p>
         <h3 className={`text-center text-[1.12rem] lg:text-[1.75rem] lg:px-[21rem] font-semibold`}>{gptSearchPageLan[language].h3}</h3>
 
-        <div className ={`lg:w-[50%] lg:mx-auto lg:flex items-center justify-center gap-x-[1rem] mt-[2rem] lg:mt-[3rem]`}>
+        <form onSubmit={ handleSearch } className ={`lg:w-[50%] lg:mx-auto lg:flex items-center justify-center gap-x-[1rem] mt-[2rem] lg:mt-[3rem]`}>
             <div className ={`relative  w-[90%] m-auto  lg:flex-[0_0_60%] group`}>
                 <label htmlFor="userDiscription" 
                     className = {` ${ userInput 
@@ -36,7 +39,7 @@ const GPT_SerachSec = () => {
                 {gptSearchPageLan[language].getStartBtn}
                 <span className={`inline-block text-[1rem] ml-[0.8rem] pt-[0.2rem]`}>&#x276F;</span>
             </button>
-        </div>
+        </form>
     </div>
 };
 

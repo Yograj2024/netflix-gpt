@@ -24,8 +24,6 @@ const Body = () => {
   useGetMoviesList();
   useDeviceType();
 
-  // ✅ Utility function for header classes is getHeaderClasses 
-  
   return  !user ? 
   <>
     <header className ={` ${handleHeaderClasses(user)}`}>

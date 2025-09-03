@@ -13,6 +13,7 @@ const selectedMovieInfoSlice = createSlice({
         },
         
         setIsShow : (state, action) => {
+            const {isShow, isOverFlow} = action.payload
             state.isShow = action.payload
         }
     }

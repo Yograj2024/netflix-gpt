@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setIsShow, setSelectedMovieInfo } from "../../utils/store/slices/selectMovieDetailSlice";
 
 const MovieCard = ({movieList, sendRef}) => {
@@ -35,7 +35,7 @@ const MovieCard = ({movieList, sendRef}) => {
         { 
             movieList.map( (movie, index) => {
                 const {title, poster_path, id} = movie
-                return poster_path != null && <div  key={id} onClick = { (e) => handleClick(movie) }  className ={`h-[16rem] rounded-[1rem] lg:h-[16rem] w-[11.4rem] flex-shrink-0 hover:scale-[103%] hover:shadow-[0_0_8px_5px_rgba(255,0,0,0.7)] transition-all duration-150 ease-linear`}>
+                return poster_path != null && <div  key={id} onClick = { (e) => handleClick(movie) }  className ={`h-[16rem] rounded-[1rem] lg:h-[16rem] w-[11.4rem] flex-shrink-0 hover:scale-[90%] hover:shadow-[0_0_8px_5px_rgba(255,0,0,0.7)] transition-all duration-150 ease-linear`}>
                     <img src={`https://image.tmdb.org/t/p/w500/${poster_path}`} 
                     alt={`moviePoster_${title}`} loading="lazy"
                     className ={`h-full w-full object-cover rounded-[1rem]`}

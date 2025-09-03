@@ -9,6 +9,7 @@ import { selectLanguageBtnText, SUPPORTED_LANGUAGES } from '../../utils/language
 import { changeLanguage } from '../../utils/store/slices/appConfigSlice';
 import { toggleGPTsearchView } from '../../utils/store/slices/gptSearchSlice';
 import { userLogedIn, userLogOut } from "../../utils/store/slices/usereSlice";
+import { setIsShow } from '../../utils/store/slices/selectMovieDetailSlice';
 
 const NavBar = ({isSideBar, setSideBar}) => {
     
@@ -47,6 +48,8 @@ const NavBar = ({isSideBar, setSideBar}) => {
     }, [])
 
     useEffect( () => {
+        dispatch(setIsShow(false))
+        document.body.style.overflow = "auto"
         location.pathname == "/browse/search-with-GPT" 
         ? dispatch(toggleGPTsearchView(true))
         : dispatch(toggleGPTsearchView(false))
